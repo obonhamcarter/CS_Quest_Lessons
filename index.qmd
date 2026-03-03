@@ -31,7 +31,7 @@ These lessons are perfect for beginners who want to learn the basics of programm
 * Allegheny College: Department of Computer and Information Science
   * website: [https://cs.allegheny.edu](https://cs.allegheny.edu)
 
-## � Three Ways to Code Interactively
+## ⭐ Three Ways to Code Interactively
 
 ::: {.highlight-box .highlight-info}
 **Choose your preferred coding environment:**
@@ -43,7 +43,7 @@ These lessons are perfect for beginners who want to learn the basics of programm
 [Learn more about interactive options →](interactive.qmd)
 :::
 
-## �🗺️ Your Quest Map
+## 💡 🗺️ Your Quest Map
 
 <div class="quest-grid">
 
