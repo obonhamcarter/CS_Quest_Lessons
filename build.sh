@@ -39,7 +39,7 @@ alias quarto="quarto-1.9.35/bin/quarto"
 # Step 3: Build Quarto site
 echo ""
 echo "🔨 Building Quarto website..."
-quarto render
+quarto-1.9.35/bin/quarto render
 
 if [ $? -eq 0 ]; then
     echo "✅ Quarto site built successfully"
