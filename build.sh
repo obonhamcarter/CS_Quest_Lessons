@@ -32,9 +32,9 @@ cd ..
 curl -o quarto.tar.gz -L \
     "https://github.com/quarto-dev/quarto-cli/releases/download/v1.9.35/quarto-1.9.35-linux-arm64.tar.gz"
 
-tar -zxvf quarto.tar.gz
+tar -zxf quarto.tar.gz
 
-alias quarto="bin/quarto"
+alias quarto="quarto-1.9.35/bin/quarto"
 
 # Step 3: Build Quarto site
 echo ""
