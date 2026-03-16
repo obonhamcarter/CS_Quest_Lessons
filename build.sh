@@ -35,7 +35,7 @@ curl -o quarto.tar.gz -L \
 mkdir -p ~/.build/quarto
 
 tar -zxvf quarto.tar.gz \
-    -C "~/.build/quarto/quarto.tar.gz" \
+    -C "~/.build/quarto/" \
     --strip-components=1
 
 alias quarto="~/.build/quarto/${QUARTO_VERSION}/bin/quarto"
