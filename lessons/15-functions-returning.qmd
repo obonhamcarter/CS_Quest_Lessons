@@ -9,7 +9,11 @@ format:
 ::: {.quest-badge}
 ✨ QUEST 15 | Difficulty: Intermediate | Time: 5 minutes
 :::
+::: {.concept-box}
+**📊 Complexity Level: Intermediate ⭐⭐**
 
+Builds on fundamental concepts from earlier quests. Best for students who have completed Quests 1-6 or have some basic programming experience. This explores pure functions and return values.
+:::
 ::: {.tip-box}
 **💻 Interactive Options:**
 

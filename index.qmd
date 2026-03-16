@@ -43,6 +43,48 @@ These lessons are perfect for beginners who want to learn the basics of programm
 [Learn more about interactive options →](interactive.qmd)
 :::
 
+## 🎓 New to Computer Science?
+
+::: {.highlight-box .highlight-info}
+**👋 Visiting from a College Fair?** Start here to learn what CS is all about!
+
+### For Prospective Students
+
+<div class="quest-grid">
+
+::: {.quest-card}
+#### 🌟 What is CS?
+Discover what Computer Science really is (it's more than coding!).
+
+[Explore →](intro/what-is-cs.qmd)
+:::
+
+::: {.quest-card}
+#### 💼 Why Study CS?
+Learn about amazing careers and opportunities in tech.
+
+[Learn More →](intro/why-study-cs.qmd)
+:::
+
+::: {.quest-card}
+#### 🎮 Try It Now!
+Write your first code in 30 seconds—no experience needed!
+
+[Start Coding →](intro/try-it-now.qmd)
+:::
+
+::: {.quest-card}
+#### 🎯 Major vs Minor
+Compare CS programs and find your perfect fit.
+
+[Compare →](intro/major-vs-minor.qmd)
+:::
+
+</div>
+
+**Or jump straight to:** [College Fair Welcome Page →](intro/college-fair-start.qmd)
+:::
+
 ## 💡 🗺️ Your Quest Map
 
 <div class="quest-grid">

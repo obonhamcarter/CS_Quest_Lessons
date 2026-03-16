@@ -10,6 +10,12 @@ format:
 🎲 QUEST 10 | Difficulty: Beginner | Time: 5 minutes
 :::
 
+::: {.concept-box}
+**📊 Complexity Level: Intermediate ⭐⭐**
+
+Builds on fundamental concepts from earlier quests. Best for students who have completed Quests 1-6 or have some basic programming experience. This combines multiple concepts into a complete project.
+:::
+
 ## 📖 Introduction: The Guessing Challenge
 
 A mysterious wizard thinks of a number between 1 and 100. Your job? Guess it! After each guess, the wizard gives you a hint: "Too high!" or "Too low!" How many guesses will you need?

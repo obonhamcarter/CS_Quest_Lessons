@@ -10,6 +10,12 @@ format:
 🌟 QUEST 8 | Difficulty: Intermediate | Time: 5 minutes
 :::
 
+::: {.concept-box}
+**📊 Complexity Level: Intermediate ⭐⭐**
+
+Builds on fundamental concepts from earlier quests. Best for students who have completed Quests 1-6 or have some basic programming experience. This introduces algorithmic thinking and patterns.
+:::
+
 ## 📖 Introduction: Nature's Secret Code
 
 You're exploring an ancient temple when you notice something amazing:  

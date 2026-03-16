@@ -35,6 +35,7 @@ qr_codes/
 *.swo
 *~
 .DS_Store
+_site/
 
 # OS
 Thumbs.db

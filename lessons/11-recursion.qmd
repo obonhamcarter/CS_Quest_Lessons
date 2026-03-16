@@ -10,6 +10,12 @@ format:
 🔁 QUEST 11 | Difficulty: Advanced | Time: 5 minutes
 :::
 
+::: {.concept-box}
+**📊 Complexity Level: Advanced ⭐⭐⭐**
+
+Advanced topic that requires solid understanding of programming fundamentals. Recommended for students who have completed most beginner and intermediate quests, or those with prior programming experience. **Not recommended for college fair demos.**
+:::
+
 ## 📖 Introduction: The Infinite Mirror
 
 Stand between two mirrors and look—you see yourself reflected infinitely! Each reflection contains another reflection, which contains another reflection...

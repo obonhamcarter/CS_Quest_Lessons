@@ -10,6 +10,12 @@ format:
 📊 QUEST 9 | Difficulty: Intermediate | Time: 5 minutes
 :::
 
+::: {.concept-box}
+**📊 Complexity Level: Intermediate ⭐⭐**
+
+Builds on fundamental concepts from earlier quests. Best for students who have completed Quests 1-6 or have some basic programming experience. This introduces algorithms and efficiency concepts.
+:::
+
 ## 📖 Introduction: The Messy Library
 
 Imagine a library where books are thrown everywhere randomly. Finding "Harry Potter" could take hours! But in a sorted library—books arranged alphabetically—you can find any book in seconds.

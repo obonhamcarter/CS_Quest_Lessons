@@ -10,6 +10,12 @@ format:
 🗝️ QUEST 7 | Difficulty: Intermediate | Time: 5 minutes
 :::
 
+::: {.concept-box}
+**📊 Complexity Level: Intermediate ⭐⭐**
+
+Builds on fundamental concepts from earlier quests. Best for students who have completed Quests 1-6 or have some basic programming experience. This introduces more advanced data structures.
+:::
+
 ## 📖 Introduction: The Magic Phonebook
 
 You're keeping track of your friends' phone numbers. With a list, you'd have:

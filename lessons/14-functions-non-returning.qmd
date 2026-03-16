@@ -10,6 +10,12 @@ format:
 ✨ QUEST 14 | Difficulty: Intermediate | Time: 5 minutes
 :::
 
+::: {.concept-box}
+**📊 Complexity Level: Intermediate ⭐⭐**
+
+Builds on fundamental concepts from earlier quests. Best for students who have completed Quests 1-6 or have some basic programming experience. This explores different types of functions.
+:::
+
 ::: {.tip-box}
 **💻 Interactive Options:**
 

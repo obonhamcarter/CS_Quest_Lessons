@@ -10,6 +10,12 @@ format:
 🔄 QUEST 4 | Difficulty: Beginner | Time: 5 minutes
 :::
 
+::: {.concept-box}
+**📊 Complexity Level: Beginner ⭐**
+
+Perfect for students with **no programming experience**. This lesson introduces fundamental concepts that are essential for all programming. Great for college fair visitors and first-time coders!
+:::
+
 ::: {.tip-box}
 **💻 Interactive Options:**
 

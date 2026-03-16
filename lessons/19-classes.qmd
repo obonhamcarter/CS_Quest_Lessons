@@ -10,6 +10,12 @@ format:
 🏗️ QUEST 19 | Difficulty: Intermediate | Time: 10 minutes
 :::
 
+::: {.concept-box}
+**📊 Complexity Level: Intermediate ⭐⭐**
+
+Builds on fundamental concepts from earlier quests. Best for students who have completed Quests 1-6 or have some basic programming experience. This introduces object-oriented programming - a major paradigm in software development.
+:::
+
 ::: {.tip-box}
 **💻 Interactive Options:**
 
