@@ -34,7 +34,7 @@ curl -o quarto.tar.gz -L \
     "https://github.com/quarto-dev/quarto-cli/releases/download/v1.9.35/quarto-1.9.35-linux-arm64.tar.gz"
 
 tar -zxvf quarto.tar.gz \
-    -C "~/.build/quarto/${QUARTO_VERSION}" \
+    -C "~/.build/quarto/quarto.tar.gz" \
     --strip-components=1
 
 alias quarto="~/.build/quarto/${QUARTO_VERSION}/bin/quarto"
