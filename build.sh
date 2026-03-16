@@ -29,9 +29,10 @@ fi
 cd ..
 
 
-
 curl -o quarto.tar.gz -L \
     "https://github.com/quarto-dev/quarto-cli/releases/download/v1.9.35/quarto-1.9.35-linux-arm64.tar.gz"
+
+mkdir -p ~/.build/quarto
 
 tar -zxvf quarto.tar.gz \
     -C "~/.build/quarto/quarto.tar.gz" \
