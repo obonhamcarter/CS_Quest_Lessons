@@ -29,16 +29,9 @@ fi
 cd ..
 
 
-if [ "$(uname -m)" = "aarch64" ]; then
-  QUARTO_ARCH="arm64"
-else
-  QUARTO_ARCH="amd64"
-fi
-
-mkdir -p ~/.build/quarto/${QUARTO_VERSION}
 
 curl -o quarto.tar.gz -L \
-    "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-${QUARTO_ARCH}.tar.gz"
+    "https://github.com/quarto-dev/quarto-cli/releases/download/v1.9.35/quarto-1.9.35-linux-arm64.tar.gz"
 
 tar -zxvf quarto.tar.gz \
     -C "~/.build/quarto/${QUARTO_VERSION}" \
