@@ -28,18 +28,19 @@ fi
 
 cd ..
 
+QUARTO_VERSION=1.7.31
 
 curl -o quarto.tar.gz -L \
-    "https://github.com/quarto-dev/quarto-cli/releases/download/v1.9.35/quarto-1.9.35-linux-amd64.tar.gz"
+    "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}quarto-${QUARTO_VERSION}-linux-amd64.tar.gz"
 
 tar -zxf quarto.tar.gz
 
-alias quarto="quarto-1.9.35/bin/quarto"
+alias quarto="quarto-${QUARTO_VERSION}/bin/quarto"
 
 # Step 3: Build Quarto site
 echo ""
 echo "🔨 Building Quarto website..."
-/opt/build/repo/quarto-1.9.35/bin/quarto render
+/opt/build/repo/quarto-${QUARTO_VERSION}/bin/quarto render
 
 if [ $? -eq 0 ]; then
     echo "✅ Quarto site built successfully"
