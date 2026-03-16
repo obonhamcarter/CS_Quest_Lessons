@@ -12,7 +12,6 @@ if ! command -v jupyter &> /dev/null; then
     echo "⚠️  Jupyter not found. Please install JupyterLite:"
     echo "   pip install jupyterlite-core jupyterlite-pyodide-kernel"
     python -m pip install -r requirements.txt
-    #exit 1
 fi
 
 # Step 2: Build JupyterLite site
@@ -29,7 +28,23 @@ fi
 
 cd ..
 
-npm install -D @quarto/netlify-plugin-quarto
+
+if [ "$(uname -m)" = "aarch64" ]; then
+  QUARTO_ARCH="arm64"
+else
+  QUARTO_ARCH="amd64"
+fi
+
+mkdir -p ~/.build/quarto/${QUARTO_VERSION}
+
+curl -o quarto.tar.gz -L \
+    "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-${QUARTO_ARCH}.tar.gz"
+
+tar -zxvf quarto.tar.gz \
+    -C "~/.build/quarto/${QUARTO_VERSION}" \
+    --strip-components=1
+
+alias quarto="~/.build/quarto/${QUARTO_VERSION}/bin/quarto"
 
 # Step 3: Build Quarto site
 echo ""
