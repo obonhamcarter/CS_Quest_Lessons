@@ -40,7 +40,7 @@ alias quarto="quarto-${QUARTO_VERSION}/bin/quarto"
 # Step 3: Build Quarto site
 echo ""
 echo "🔨 Building Quarto website..."
-/opt/build/repo/quarto-${QUARTO_VERSION}/bin/quarto render
+/opt/build/repo/quarto-${QUARTO_VERSION}/bin/quarto publish
 
 if [ $? -eq 0 ]; then
     echo "✅ Quarto site built successfully"
