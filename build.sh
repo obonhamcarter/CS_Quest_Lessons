@@ -29,6 +29,8 @@ fi
 
 cd ..
 
+npm install -D @quarto/netlify-plugin-quarto
+
 # Step 3: Build Quarto site
 echo ""
 echo "🔨 Building Quarto website..."

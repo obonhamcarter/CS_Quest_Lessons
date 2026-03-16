@@ -15,6 +15,3 @@
   to = "/index.html"
   status = 200
   force = false
-
-[[plugins]]
-package = "@quarto/netlify-plugin-quarto"
