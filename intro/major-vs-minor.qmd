@@ -45,6 +45,7 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 
 ::: {.quest-card}
 ### 🧱 Foundations
+
 - Programming (Python, Java, C++)
 - Data Structures & Algorithms
 - Computer Architecture
@@ -53,6 +54,7 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 
 ::: {.quest-card}
 ### 🤖 Advanced Topics
+
 - Artificial Intelligence
 - Machine Learning
 - Database Systems
@@ -61,6 +63,7 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 
 ::: {.quest-card}
 ### 🎨 Specializations
+
 - Web Development
 - Mobile Apps
 - Computer Graphics
@@ -69,6 +72,7 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 
 ::: {.quest-card}
 ### 🔬 Research
+
 - Independent Study
 - Senior Thesis
 - Faculty Collaboration
@@ -81,23 +85,27 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 
 ::: {.concept-box}
 **First Year:**
+
 - CMPSC 100: Computational Expression
 - CMPSC 101: Data Abstraction
 - Math courses (Discrete Structures, Calculus)
 
 **Second Year:**
+
 - Data Structures
 - Computer Organization
 - Web Development
 - Choose electives aligned with interests
 
 **Third Year:**
+
 - Algorithm Analysis
 - Software Engineering
 - Database Systems
 - Specialized electives (AI, Graphics, etc.)
 
 **Fourth Year:**
+
 - Advanced electives
 - Senior Thesis/Capstone Project
 - Internship opportunities
@@ -106,6 +114,7 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 ### Career Outcomes
 
 **CS Majors typically become:**
+
 - **Software Engineers** at companies like Google, Microsoft, Amazon, Meta
 - **Data Scientists** at healthcare, finance, and tech companies
 - **AI/ML Engineers** developing intelligent systems
@@ -131,6 +140,7 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 ### Why Choose a CS Minor?
 
 **CS skills are valuable in EVERY field:**
+
 - 🧬 **Biology + CS** = Bioinformatics, Genomics Research, Medical Software
 - 💼 **Business + CS** = Tech Entrepreneurship, Data Analytics, Product Management
 - 🎨 **Art + CS** = Game Design, Digital Art, UX/UI Design, Animation
@@ -143,11 +153,13 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 
 ::: {.concept-box}
 **Core Requirements (Foundation):**
+
 - Programming fundamentals (Python, Java)
 - Data Structures
 - One or two intermediate CS courses
 
 **Electives (Choose Based on Your Interests):**
+
 - Web Development → Build websites and web apps
 - Database Systems → Manage and analyze data
 - AI/Machine Learning → Create intelligent systems
@@ -165,6 +177,7 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 **Career:** Bioinformatics Scientist
 
 **Use CS to:**
+
 - Analyze genomic data
 - Model biological systems
 - Develop medical software
@@ -178,6 +191,7 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 **Career:** Product Manager / Tech Entrepreneur
 
 **Use CS to:**
+
 - Understand technical constraints
 - Communicate with engineers
 - Analyze business data
@@ -191,6 +205,7 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 **Career:** Game Designer / Digital Artist
 
 **Use CS to:**
+
 - Create interactive experiences
 - Build game mechanics
 - Develop art tools
@@ -204,6 +219,7 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 **Career:** UX Researcher / HCI Specialist
 
 **Use CS to:**
+
 - Design user interfaces
 - Conduct usability research
 - Build accessible software
@@ -227,6 +243,7 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 ## 🤔 How Do I Choose?
 
 ### Choose the CS MAJOR if you:
+
 - ✅ Want to become a professional software developer
 - ✅ Are fascinated by how computers work
 - ✅ Want to pursue graduate school in CS
@@ -234,6 +251,7 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 - ✅ Want maximum flexibility in tech careers
 
 ### Choose the CS MINOR if you:
+
 - ✅ Have a primary passion in another field
 - ✅ Want to enhance your major with tech skills
 - ✅ Want to be competitive in any career (data skills are universal!)
@@ -244,6 +262,7 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 **💡 Can't Decide?**
 
 **Start with introductory CS courses!** You can always:
+
 - Begin as a CS minor and upgrade to a major
 - Take a few CS courses just to explore
 - Double major (yes, it's possible!)
@@ -255,17 +274,20 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 ## 📚 Course Load & Time Commitment
 
 ### CS Major
+
 - **~12-14 CS courses** + supporting math courses
 - **3-4 CS courses per year** (manageable with any major/minor combo)
 - **Senior Thesis/Project** (meaningful capstone experience)
 
 ### CS Minor
+
 - **~6-7 CS courses** 
 - **1-2 CS courses per year** (easy to fit with any major)
 - **No thesis required** (but research opportunities available)
 
 ::: {.tip-box}
 **Both options are designed to fit comfortably with:**
+
 - Other majors/minors
 - Study abroad
 - Athletics
@@ -295,12 +317,14 @@ Whether you want to **dive deep** into computing or **enhance** another major wi
 **We're here to help!**
 
 **Computer Science Department**
+
 - 📧 Email: obonhamcarter@allegheny.edu
 - 🌐 Website: [https://cs.allegheny.edu](https://cs.allegheny.edu)
 - 📍 Location: Alden Hall, Allegheny College
 - 💬 Schedule a visit: See campus, meet faculty, sit in on a class!
 
-**General Admissions**
-- 🌐 [https://allegheny.edu/admissions](https://allegheny.edu/admissions)
-- ☎️ (814) 332-4351
+**General Website**
+
+- 🌐 [https://www.allegheny.edu/](https://www.allegheny.edu/)
+
 :::

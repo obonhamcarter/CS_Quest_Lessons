@@ -27,6 +27,7 @@ Computer Science opens doors to careers that are **in-demand**, **well-paid**, *
 
 ::: {.highlight-box .highlight-info}
 **The Stats:**
+
 - 💼 **13% job growth** projected through 2030 (faster than average)
 - 🌐 **1.4 million** CS job openings expected by 2030
 - 🏢 **Every industry** needs tech talent—from hospitals to Hollywood
@@ -108,6 +109,7 @@ Use CS to solve problems that matter:
 A CS degree gives you **choices**:
 
 **Work Settings:**
+
 - 🏢 Big tech companies (Google, Microsoft, Apple)
 - 🚀 Startups (be employee #5 at the next unicorn!)
 - 💼 Any industry (finance, healthcare, entertainment, government)
@@ -116,6 +118,7 @@ A CS degree gives you **choices**:
 - 💡 Start your own company
 
 **Career Paths:**
+
 - Software Engineer
 - Data Scientist
 - Cybersecurity Specialist
@@ -136,6 +139,7 @@ A CS degree gives you **choices**:
 **For students who want to dive deep into computing.**
 
 **You'll learn:**
+
 - Advanced algorithms and data structures
 - Software engineering and system design
 - AI, machine learning, and data science
@@ -145,6 +149,7 @@ A CS degree gives you **choices**:
 **Career path:** Software Engineer, Research, Graduate School, Tech Leadership
 
 **Sample courses:**
+
 - Data Structures
 - Algorithms
 - Database Systems
@@ -158,12 +163,14 @@ A CS degree gives you **choices**:
 **Perfect for combining CS with another passion!**
 
 **Core CS courses PLUS flexibility to focus on:**
+
 - Your major field enhanced with tech skills
 - Web development, data analysis, or digital design
 
 **Career path:** Field specialist with tech skills (bioinformatics, digital marketing, computational finance, etc.)
 
 **Great combinations:**
+
 - Biology + CS = Bioinformatics Researcher
 - Business + CS = Tech Entrepreneur / Product Manager
 - Art + CS = Game Designer / Digital Artist
@@ -185,6 +192,7 @@ A CS degree gives you **choices**:
 ---
 
 **Questions?** Reach out to the Allegheny CS Department:
+
 - 📧 Email: obonhamcarter@allegheny.edu
 - 🌐 Website: [https://cs.allegheny.edu](https://cs.allegheny.edu)
 - 📍 Visit: Alden Hall, Allegheny College

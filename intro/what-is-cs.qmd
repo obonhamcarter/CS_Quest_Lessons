@@ -24,11 +24,13 @@ Computer Science is the art and science of **solving problems** using computatio
 :::
 
 ### It's NOT Just About...
+
 - ❌ Sitting alone in a dark room typing code
 - ❌ Fixing your family's printer
 - ❌ Being a "math genius"
 
 ### It IS About...
+
 - ✅ **Creating** things people use every day
 - ✅ **Solving** real-world problems
 - ✅ **Collaborating** with diverse teams
@@ -36,6 +38,7 @@ Computer Science is the art and science of **solving problems** using computatio
 
 ::: {.highlight-box .highlight-info}
 **💡 Fun Fact**: Computer Scientists created:
+
 - The smartphone in your pocket 📱
 - Your favorite video games 🎮
 - Netflix's recommendation algorithm 🎬
@@ -115,6 +118,7 @@ Computer Science is best learned by **doing**. Let's get hands-on!
 **🎓 Visiting Allegheny College?**
 
 Our Computer Science department offers:
+
 - Small class sizes with personal attention
 - Hands-on research opportunities
 - Internships with leading tech companies

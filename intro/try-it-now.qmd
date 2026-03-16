@@ -83,6 +83,7 @@ print(f"\n🚀 With CS skills, you can build anything you imagine!")
 
 ::: {.challenge-box}
 **🎯 Try This:**
+
 1. Change the `name` variable to your own name
 2. Change the `hobby` variable to your favorite hobby
 3. Run the code to see the customized message!
@@ -121,6 +122,7 @@ print("🎮 Click 'Run Code' again for a new adventure!")
 
 ::: {.challenge-box}
 **🎯 Try This:**
+
 1. Run the code multiple times—each adventure is different!
 2. Add your own words to the lists (just put them in quotes with commas)
 3. Can you add a list of heroes? (Hint: copy one of the lists and change the words)
@@ -172,6 +174,7 @@ except ValueError:
 
 ::: {.challenge-box}
 **🎯 Try This:**
+
 1. Change `birth_month` and `birth_day` to your actual birthday
 2. Run the code to see how many days until your birthday!
 3. Try your friend's birthday too!
@@ -266,6 +269,7 @@ Add your own test password to the `test_passwords` list to see how strong it is!
 **You just wrote and ran real Python code!** 🎉
 
 In these few minutes, you:
+
 - 🎨 Created art with loops and colors
 - 💬 Built an interactive chatbot
 - 🎲 Used randomness to generate content
