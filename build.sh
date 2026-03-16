@@ -11,7 +11,7 @@ echo "📦 Checking JupyterLite installation..."
 if ! command -v jupyter &> /dev/null; then
     echo "⚠️  Jupyter not found. Please install JupyterLite:"
     echo "   pip install jupyterlite-core jupyterlite-pyodide-kernel"
-    $(python -m pip install -r requirements.txt)
+    python -m pip install -r requirements.txt
     #exit 1
 fi
 
