@@ -100,19 +100,22 @@ def play_number_game():
         attempts += 1
         remaining = max_attempts - attempts + 1
         
-        # Get player input (simulated for demo)
-        # In a real version, you'd use: guess = int(input(f"Attempt {attempts}/{max_attempts}: "))
-        # For demo, let's simulate some guesses
+        # Simulated guesses using a smart strategy (binary search)
+        # In a real game: guess = int(input(f"Attempt {attempts}/{max_attempts}: "))
         if attempts == 1:
-            guess = 50
+            guess = 50  # Start in the middle
         elif attempts == 2:
-            guess = 75 if secret_number > 50 else 25
+            guess = 75 if secret_number > 50 else 25  # Adjust based on hint
         elif attempts == 3:
-            guess = secret_number - 10 if secret_number > guess else secret_number + 10
+            # Get closer based on previous hints
+            if guess < secret_number:
+                guess = guess + (100 - guess) // 2
+            else:
+                guess = guess // 2
         else:
             guess = secret_number  # Win on 4th attempt for demo
         
-        print(f"Attempt {attempts}/{max_attempts}: You guessed {guess}")
+        print(f"Attempt {attempts}/{max_attempts}: Guessing {guess}")
         
         # Check if correct
         if guess == secret_number:

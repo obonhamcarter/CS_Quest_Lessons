@@ -70,8 +70,9 @@ Create a program that talks to you!
 print("🤖 WELCOME TO CS BOT!")
 print("=" * 30)
 
-name = input("What's your name? ")
-hobby = input("What's your favorite hobby? ")
+# Edit these values to customize the chatbot's responses!
+name = "Alex"  # <-- Change this to your name!
+hobby = "reading"  # <-- Change this to your hobby!
 
 print(f"\n✨ Hi {name}! That's an awesome name!")
 print(f"🎯 {hobby} sounds amazing!")
@@ -82,7 +83,10 @@ print(f"\n🚀 With CS skills, you can build anything you imagine!")
 
 ::: {.challenge-box}
 **🎯 Try This:**
-Run the code and answer the questions. Then try running it again with different answers!
+1. Change the `name` variable to your own name
+2. Change the `hobby` variable to your favorite hobby
+3. Run the code to see the customized message!
+4. Try different values and run it multiple times!
 :::
 
 ## 🎲 Demo 3: Random Adventure Generator

@@ -266,23 +266,32 @@ for i in range(1, 11):
 
 Or make a guessing game hint system:
 
-```python
+```{pyodide-python}
 secret_number = 42
-guesses = 0
 max_guesses = 5
 
-while guesses < max_guesses:
-    guesses += 1
-    guess = int(input(f"Guess {guesses}/{max_guesses}: "))
+# Simulate some guesses (in a real game, you'd ask the user)
+guesses_to_try = [30, 50, 40, 43, 42]  # Try changing these numbers!
+
+for guess_num in range(1, max_guesses + 1):
+    guess = guesses_to_try[guess_num - 1]
+    print(f"\nGuess {guess_num}/{max_guesses}: {guess}")
     
     if guess == secret_number:
         print("🎉 You got it!")
         break
     elif guess < secret_number:
-        print("📈 Too low!")
+        print("📈 Too low! Try a higher number.")
     else:
-        print("📉 Too high!")
+        print("📉 Too high! Try a lower number.")
+else:
+    print(f"\nOut of guesses! The number was {secret_number}")
 ```
+
+::: {.challenge-box}
+**🎯 Try This:**
+Change the numbers in the `guesses_to_try` list to see different hints!
+:::
 
 ---
 
