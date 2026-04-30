@@ -16,6 +16,14 @@ format:
 Perfect for students with **no programming experience**. This lesson introduces fundamental concepts that are essential for all programming. Great for college fair visitors and first-time coders!
 :::
 
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=lessons/06-functions.ipynb)** - Full Jupyter environment in your browser
+- ▶️ **Run code directly below** - All code cells on this page are editable and runnable
+- 📥 **[Download Notebook](../files/lessons/06-functions.ipynb)** - For use in local Jupyter or Google Colab
+:::
+
 ## 📖 Introduction: The Spell Book
 
 Imagine being a wizard who needs to cast the same spell repeatedly. Would you say the entire incantation every time?

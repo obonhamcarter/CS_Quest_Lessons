@@ -16,6 +16,15 @@ format:
 Builds on fundamental concepts from earlier quests. Best for students who have completed Quests 1-6 or have some basic programming experience. This combines multiple concepts into a complete project.
 :::
 
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=lessons/10-number-game.ipynb)** - Full Jupyter environment in your browser
+- ▶️ **Run code directly below** - All code cells on this page are editable and runnable
+- 📥 **[Download Notebook](../files/lessons/10-number-game.ipynb)** - For use in local Jupyter or Google Colab
+:::
+
+
 ## 📖 Introduction: The Guessing Challenge
 
 A mysterious wizard thinks of a number between 1 and 100. Your job? Guess it! After each guess, the wizard gives you a hint: "Too high!" or "Too low!" How many guesses will you need?

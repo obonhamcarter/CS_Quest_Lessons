@@ -24,6 +24,14 @@ Builds on fundamental concepts from earlier quests. Best for students who have c
 - 📥 **[Download Notebook](../files/lessons/13-iterative-loops.ipynb)** - For use in local Jupyter or Google Colab
 :::
 
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=lessons/13-iterative-loops.ipynb)** - Full Jupyter environment in your browser
+- ▶️ **Run code directly below** - All code cells on this page are editable and runnable
+- 📥 **[Download Notebook](../files/lessons/13-iterative-loops.ipynb)** - For use in local Jupyter or Google Colab
+:::
+
 ## 📖 Introduction: Two Paths Up the Mountain
 
 Imagine you're climbing a mountain. You can take two approaches:

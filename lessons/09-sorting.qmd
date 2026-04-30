@@ -16,6 +16,14 @@ format:
 Builds on fundamental concepts from earlier quests. Best for students who have completed Quests 1-6 or have some basic programming experience. This introduces algorithms and efficiency concepts.
 :::
 
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=lessons/09-sorting.ipynb)** - Full Jupyter environment in your browser
+- ▶️ **Run code directly below** - All code cells on this page are editable and runnable
+- 📥 **[Download Notebook](../files/lessons/09-sorting.ipynb)** - For use in local Jupyter or Google Colab
+:::
+
 ## 📖 Introduction: The Messy Library
 
 Imagine a library where books are thrown everywhere randomly. Finding "Harry Potter" could take hours! But in a sorted library—books arranged alphabetically—you can find any book in seconds.

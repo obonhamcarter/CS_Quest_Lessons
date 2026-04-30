@@ -16,6 +16,14 @@ format:
 Advanced topic that requires solid understanding of programming fundamentals. Recommended for students who have completed most beginner and intermediate quests, or those with prior programming experience. **Not recommended for college fair demos.**
 :::
 
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=lessons/11-recursion.ipynb)** - Full Jupyter environment in your browser
+- ▶️ **Run code directly below** - All code cells on this page are editable and runnable
+- 📥 **[Download Notebook](../files/lessons/11-recursion.ipynb)** - For use in local Jupyter or Google Colab
+:::
+
 ## 📖 Introduction: The Infinite Mirror
 
 Stand between two mirrors and look—you see yourself reflected infinitely! Each reflection contains another reflection, which contains another reflection...

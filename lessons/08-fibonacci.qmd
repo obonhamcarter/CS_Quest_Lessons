@@ -16,6 +16,14 @@ format:
 Builds on fundamental concepts from earlier quests. Best for students who have completed Quests 1-6 or have some basic programming experience. This introduces algorithmic thinking and patterns.
 :::
 
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=lessons/08-fibonacci.ipynb)** - Full Jupyter environment in your browser
+- ▶️ **Run code directly below** - All code cells on this page are editable and runnable
+- 📥 **[Download Notebook](../files/lessons/08-fibonacci.ipynb)** - For use in local Jupyter or Google Colab
+:::
+
 ## 📖 Introduction: Nature's Secret Code
 
 You're exploring an ancient temple when you notice something amazing:  

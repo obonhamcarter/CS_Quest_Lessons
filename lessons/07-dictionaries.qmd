@@ -16,6 +16,14 @@ format:
 Builds on fundamental concepts from earlier quests. Best for students who have completed Quests 1-6 or have some basic programming experience. This introduces more advanced data structures.
 :::
 
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=lessons/07-dictionaries.ipynb)** - Full Jupyter environment in your browser
+- ▶️ **Run code directly below** - All code cells on this page are editable and runnable
+- 📥 **[Download Notebook](../files/lessons/07-dictionaries.ipynb)** - For use in local Jupyter or Google Colab
+:::
+
 ## 📖 Introduction: The Magic Phonebook
 
 You're keeping track of your friends' phone numbers. With a list, you'd have:

@@ -16,6 +16,15 @@ format:
 Advanced topic that requires solid understanding of programming fundamentals. Recommended for students who have completed most beginner and intermediate quests, or those with prior programming experience. **Not recommended for college fair demos.**
 :::
 
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=lessons/12-complexity.ipynb)** - Full Jupyter environment in your browser
+- ▶️ **Run code directly below** - All code cells on this page are editable and runnable
+- 📥 **[Download Notebook](../files/lessons/12-complexity.ipynb)** - For use in local Jupyter or Google Colab
+:::
+
+
 ## 📖 Introduction: The Race
 
 You need to find your friend Alex in a phone book with 1 million names. You have two methods:
