@@ -34,7 +34,7 @@ website:
           - text: "College Fair Visitors"
             file: intro/college-fair-start.qmd
           - text: "What is CS!"
-            file: intro/what-is-cs-quests.qmd
+            file: intro/what-is-cs.qmd
           - text: "Why Study CS?"
             file: intro/why-study-cs.qmd
           - text: "Try it Now"
