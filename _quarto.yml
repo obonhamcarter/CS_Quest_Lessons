@@ -31,6 +31,8 @@ website:
     contents:
       - section:  "For Prospective Students"
         contents:
+          - text: "College Fair Visitors"
+            file: intro/college-fair-start.qmd
           - text: "What is CS!"
             file: intro/what-is-cs-quests.qmd
           - text: "Why Study CS?"
