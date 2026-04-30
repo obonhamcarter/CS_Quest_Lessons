@@ -13,7 +13,7 @@ format:
 ::: {.tip-box}
 **💻 Interactive Options:**
 
-- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=try-it-now.ipynb)** - Full Jupyter environment in your browser
+- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=intro/try-it-now.ipynb)** - Full Jupyter environment in your browser
 - ▶️ **Run code directly below** - All code cells on this page are editable and runnable
 - 📥 **[Download Notebook](../files/intro/try-it-now.ipynb)** - For use in local Jupyter or Google Colab
 :::
