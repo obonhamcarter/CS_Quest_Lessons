@@ -19,7 +19,7 @@ Perfect for students with **no programming experience**. This lesson introduces 
 ::: {.tip-box}
 **💻 Interactive Options:**
 
-- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=05-lists.ipynb)** - Full Jupyter environment in your browser
+- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=lessons/05-lists.ipynb)** - Full Jupyter environment in your browser
 - ▶️ **Run code directly below** - All code cells on this page are editable and runnable
 - 📥 **[Download Notebook](../files/lessons/05-lists.ipynb)** - For use in local Jupyter or Google Colab
 :::

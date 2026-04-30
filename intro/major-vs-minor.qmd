@@ -13,7 +13,7 @@ format:
 ::: {.tip-box}
 **💻 Interactive Options:**
 
-- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=major-vs-minor.ipynb)** - Full Jupyter environment in your browser
+- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=intro/major-vs-minor.ipynb)** - Full Jupyter environment in your browser
 - 📥 **[Download Notebook](../files/intro/major-vs-minor.ipynb)** - For use in local Jupyter or Google Colab
 :::
 

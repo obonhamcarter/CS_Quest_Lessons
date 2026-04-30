@@ -13,7 +13,7 @@ format:
 ::: {.tip-box}
 **💻 Interactive Options:**
 
-- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=what-is-cs.ipynb)** - Full Jupyter environment in your browser
+- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=intro/what-is-cs.ipynb)** - Full Jupyter environment in your browser
 - 📥 **[Download Notebook](../files/intro/what-is-cs.ipynb)** - For use in local Jupyter or Google Colab
 :::
 

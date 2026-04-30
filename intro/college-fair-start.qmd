@@ -19,7 +19,7 @@ New to Computer Science? You're in the right place! Let's explore what CS is all
 ::: {.tip-box}
 **💻 Interactive Options:**
 
-- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=college-fair-start.ipynb)** - Full Jupyter environment in your browser
+- 📓 **[Open in JupyterLite](../jupyterlite/lab/index.html?path=intro/college-fair-start.ipynb)** - Full Jupyter environment in your browser
 - 📥 **[Download Notebook](../files/intro/college-fair-start.ipynb)** - For use in local Jupyter or Google Colab
 :::
 
