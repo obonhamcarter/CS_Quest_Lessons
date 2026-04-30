@@ -1,5 +1,5 @@
 ---
-title: "CS Quest - Coding Adventures"
+title: "CS Quests - Coding Adventures"
 subtitle: "Interactive Computer Science Mini-Lessons for Beginners"
 format:
   live-html:
