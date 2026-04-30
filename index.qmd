@@ -7,14 +7,14 @@ format:
 ---
 
 ::: {.hero}
-# 🚀 Welcome to CS Quest!
+# 🚀 Welcome to CS Quests!
 
 Embark on an exciting journey through the world of computer science. Each quest is a 5-minute adventure that teaches you something amazing about coding!
 :::
 
-## 🎯 What is CS Quest?
+## 🎯 What is CS Quests?
 
-CS Quest is a collection of interactive mini-lessons designed to make learning computer science **fun**, **engaging**, and **hands-on**. Each quest takes about 5 minutes and includes:
+CS Quests is a collection of interactive mini-lessons designed to make learning computer science **fun**, **engaging**, and **hands-on**. Each quest takes about 5 minutes and includes:
 
 - 📖 An exciting story or scenario
 - 💡 Clear explanations with examples
