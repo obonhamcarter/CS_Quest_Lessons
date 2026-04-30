@@ -9,7 +9,7 @@ project:
     - files/**
 
 website:
-  title: "CS Quest - Coding Adventures"
+  title: "CS Quests - Coding Adventures"
   google-analytics: G-V6C5GYLLFK
   description: "Interactive computer science mini-lessons for beginners"
   navbar:
