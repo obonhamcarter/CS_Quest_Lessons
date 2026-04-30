@@ -37,10 +37,10 @@ website:
             file: intro/what-is-cs.qmd
           - text: "Why Study CS?"
             file: intro/why-study-cs.qmd
-          - text: "Try it Now"
-            file: intro/try-it-now.qmd
           - text: "Major vs Minor"
             file: intro/major-vs-minor.qmd
+          - text: "Try it Now"
+            file: intro/try-it-now.qmd
       - section: "Begin Your Journey"
         contents:
           - text: "Quest 1: Variables - Your Coding Backpack"
