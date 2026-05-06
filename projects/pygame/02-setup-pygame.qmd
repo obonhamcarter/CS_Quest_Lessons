@@ -1,0 +1,268 @@
+---
+title: "Chapter 2.2: Setting Up Pygame & Your First Window"
+subtitle: "From Zero to Game Window in Minutes!"
+format:
+  live-html:
+    code-tools: true
+execute:
+  eval: false
+---
+
+::: {.quest-badge}
+🎮 PROJECT 2.2 | Difficulty: Intermediate | Time: 15 minutes
+:::
+
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/pygame/02-setup-pygame.ipynb)**
+- 📥 **[Download Notebook](../../files/projects/pygame/02-setup-pygame.ipynb)**
+- 💡 **Note**: Pygame requires a display, so run these examples locally!
+:::
+
+## 🚀 Installing Pygame with UV
+
+Using UV makes installation super simple:
+
+```bash
+# Create a new game project
+mkdir my-pygame-project
+cd my-pygame-project
+
+# Initialize UV
+uv init
+
+# Add pygame
+uv add pygame
+
+# That's it! Pygame is installed.
+```
+
+Verify installation:
+
+```bash
+uv run python -c "import pygame; print(pygame.version.ver)"
+```
+
+## 🎮 Your First Pygame Window
+
+Let's create a basic game window:
+
+```python
+# game_window.py
+import pygame
+import sys
+
+# Initialize Pygame
+pygame.init()
+
+# Constants
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+FPS = 60
+
+# Colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+BLUE = (0, 100, 255)
+
+# Create the game window
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("My First Pygame Window!")
+
+# Clock for controlling frame rate
+clock = pygame.time.Clock()
+
+# Game loop
+running = True
+while running:
+    # Handle events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    
+    # Fill the screen with a color
+    screen.fill(BLUE)
+    
+    # Update the display
+    pygame.display.flip()
+    
+    # Control frame rate
+    clock.tick(FPS)
+
+# Quit
+pygame.quit()
+sys.exit()
+```
+
+Run it:
+```bash
+uv run python game_window.py
+```
+
+## 🎨 Drawing Shapes
+
+```python
+# drawing_shapes.py
+import pygame
+import sys
+
+pygame.init()
+
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Drawing Shapes")
+
+# Colors
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+YELLOW = (255, 255, 0)
+
+clock = pygame.time.Clock()
+running = True
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    
+    # Fill background
+    screen.fill(WHITE)
+    
+    # Draw shapes
+    # Rectangle: pygame.draw.rect(surface, color, (x, y, width, height))
+    pygame.draw.rect(screen, RED, (50, 50, 100, 80))
+    
+    # Circle: pygame.draw.circle(surface, color, (x, y), radius)
+    pygame.draw.circle(screen, GREEN, (400, 300), 50)
+    
+    # Line: pygame.draw.line(surface, color, start_pos, end_pos, width)
+    pygame.draw.line(screen, BLUE, (600, 100), (700, 200), 5)
+    
+    # Polygon: pygame.draw.polygon(surface, color, points_list)
+    points = [(300, 500), (350, 400), (400, 500)]
+    pygame.draw.polygon(screen, YELLOW, points)
+    
+    pygame.display.flip()
+    clock.tick(60)
+
+pygame.quit()
+sys.exit()
+```
+
+## 🎯 Adding Movement
+
+```python
+# moving_square.py
+import pygame
+import sys
+
+pygame.init()
+
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Moving Square")
+
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+SPEED = 5
+
+# Square position
+x = 400
+y = 300
+size = 50
+
+clock = pygame.time.Clock()
+running = True
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    
+    # Get pressed keys
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        x -= SPEED
+    if keys[pygame.K_RIGHT]:
+        x += SPEED
+    if keys[pygame.K_UP]:
+        y -= SPEED
+    if keys[pygame.K_DOWN]:
+        y += SPEED
+    
+    # Keep square on screen
+    x = max(0, min(x, SCREEN_WIDTH - size))
+    y = max(0, min(y, SCREEN_HEIGHT - size))
+    
+    # Draw
+    screen.fill(WHITE)
+    pygame.draw.rect(screen, RED, (x, y, size, size))
+    
+    pygame.display.flip()
+    clock.tick(60)
+
+pygame.quit()
+sys.exit()
+```
+
+## 🎮 Key Concepts Explained
+
+### Event Handling
+
+```{python}
+# Events tell you what's happening
+event_types = {
+    "pygame.QUIT": "User closed the window",
+    "pygame.KEYDOWN": "A key was pressed",
+    "pygame.KEYUP": "A key was released",
+    "pygame.MOUSEBUTTONDOWN": "Mouse button clicked",
+    "pygame.MOUSEMOTION": "Mouse moved"
+}
+
+print("🎮 Common Pygame Events:")
+for event, description in event_types.items():
+    print(f"  {event}: {description}")
+```
+
+### The Clock
+
+```{python}
+# Clock controls how fast your game runs
+print("⏰ Frame Rate Examples:")
+print("  30 FPS = 30 frames/second = ~33ms per frame")
+print("  60 FPS = 60 frames/second = ~16ms per frame")
+print("  120 FPS = 120 frames/second = ~8ms per frame")
+print("\nHigher FPS = smoother motion!")
+```
+
+## 🏆 Practice Challenge
+
+::: {.challenge-box}
+**Challenge: Bouncing Ball**
+
+Create a program where:
+1. A ball starts at the center
+2. It moves diagonally
+3. It bounces off the walls
+4. Bonus: Change color on each bounce!
+
+Hints:
+- Use variables for x_speed and y_speed
+- When x hits 0 or SCREEN_WIDTH, reverse x_speed
+- When y hits 0 or SCREEN_HEIGHT, reverse y_speed
+:::
+
+## 🚀 What's Next?
+
+Now that you can create windows and handle input, we'll build our first game: **Snake**!
+
+---
+
+::: {.navigation-box}
+**Previous**: [2.1 Intro to Pygame](01-intro-pygame.qmd) | **Next**: [2.3 Building Snake - Part 1](03-snake-game-1.qmd)
+:::

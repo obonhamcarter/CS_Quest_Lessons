@@ -1,0 +1,354 @@
+---
+title: "Chapter 2.4: Building Snake Game - Part 2"
+subtitle: "Polish Your Game with Advanced Features"
+format:
+  live-html:
+    code-tools: true
+execute:
+  eval: false
+---
+
+::: {.quest-badge}
+🎮 PROJECT 2.4 | Difficulty: Intermediate | Time: 25 minutes
+:::
+
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/pygame/04-snake-game-2.ipynb)**
+- 📥 **[Download Notebook](../../files/projects/pygame/04-snake-game-2.ipynb)**
+:::
+
+## 🎮 Enhanced Snake Game
+
+Let's add professional features to our Snake game:
+
+```python
+# enhanced_snake.py
+import pygame
+import random
+import sys
+import json
+from pathlib import Path
+
+pygame.init()
+
+# Constants
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+GRID_SIZE = 20
+GRID_WIDTH = SCREEN_WIDTH // GRID_SIZE
+GRID_HEIGHT = SCREEN_HEIGHT // GRID_SIZE
+FPS_NORMAL = 10
+FPS_FAST = 15
+
+# Colors
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+GREEN = (0, 255, 0)
+DARK_GREEN = (0, 180, 0)
+RED = (255, 0, 0)
+YELLOW = (255, 255, 0)
+GRAY = (128, 128, 128)
+
+# Setup
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Enhanced Snake Game")
+clock = pygame.time.Clock()
+
+# High score management
+HIGH_SCORE_FILE = Path("snake_high_score.json")
+
+def load_high_score():
+    if HIGH_SCORE_FILE.exists():
+        with open(HIGH_SCORE_FILE) as f:
+            data = json.load(f)
+            return data.get('high_score', 0)
+    return 0
+
+def save_high_score(score):
+    with open(HIGH_SCORE_FILE, 'w') as f:
+        json.dump({'high_score': score}, f)
+
+class SnakeGame:
+    def __init__(self):
+        self.reset_game()
+        self.high_score = load_high_score()
+        self.game_state = 'playing'  # 'playing', 'game_over'
+    
+    def reset_game(self):
+        self.snake = [(GRID_WIDTH // 2, GRID_HEIGHT // 2)]
+        self.direction = (1, 0)
+        self.next_direction = (1, 0)
+        self.food = self.spawn_food()
+        self.score = 0
+        self.fps = FPS_NORMAL
+    
+    def spawn_food(self):
+        while True:
+            food = (random.randint(0, GRID_WIDTH - 1),
+                    random.randint(0, GRID_HEIGHT - 1))
+            if food not in self.snake:
+                return food
+    
+    def handle_input(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+            elif event.type == pygame.KEYDOWN:
+                if self.game_state == 'playing':
+                    if event.key == pygame.K_UP and self.direction != (0, 1):
+                        self.next_direction = (0, -1)
+                    elif event.key == pygame.K_DOWN and self.direction != (0, -1):
+                        self.next_direction = (0, 1)
+                    elif event.key == pygame.K_LEFT and self.direction != (1, 0):
+                        self.next_direction = (-1, 0)
+                    elif event.key == pygame.K_RIGHT and self.direction != (-1, 0):
+                        self.next_direction = (1, 0)
+                elif self.game_state == 'game_over':
+                    if event.key == pygame.K_r:
+                        self.reset_game()
+                        self.game_state = 'playing'
+                    elif event.key == pygame.K_q:
+                        return False
+        return True
+    
+    def update(self):
+        if self.game_state != 'playing':
+            return
+        
+        self.direction = self.next_direction
+        head_x, head_y = self.snake[0]
+        new_head = (head_x + self.direction[0], head_y + self.direction[1])
+        
+        # Check collisions
+        if (new_head[0] < 0 or new_head[0] >= GRID_WIDTH or
+            new_head[1] < 0 or new_head[1] >= GRID_HEIGHT or
+            new_head in self.snake):
+            self.game_state = 'game_over'
+            if self.score > self.high_score:
+                self.high_score = self.score
+                save_high_score(self.high_score)
+            return
+        
+        self.snake.insert(0, new_head)
+        
+        # Check food
+        if new_head == self.food:
+            self.score += 1
+            self.food = self.spawn_food()
+            # Increase speed every 5 points
+            if self.score % 5 == 0:
+                self.fps = min(FPS_FAST, self.fps + 1)
+        else:
+            self.snake.pop()
+    
+    def draw(self):
+        screen.fill(BLACK)
+        
+        # Draw grid (optional)
+        for x in range(0, SCREEN_WIDTH, GRID_SIZE):
+            pygame.draw.line(screen, GRAY, (x, 0), (x, SCREEN_HEIGHT), 1)
+        for y in range(0, SCREEN_HEIGHT, GRID_SIZE):
+            pygame.draw.line(screen, GRAY, (0, y), (SCREEN_WIDTH, y), 1)
+        
+        # Draw snake
+        for i, segment in enumerate(self.snake):
+            rect = pygame.Rect(
+                segment[0] * GRID_SIZE + 1,
+                segment[1] * GRID_SIZE + 1,
+                GRID_SIZE - 2,
+                GRID_SIZE - 2
+            )
+            # Head is bright green, body darker
+            color = GREEN if i == 0 else DARK_GREEN
+            pygame.draw.rect(screen, color, rect)
+            # Add eye to head
+            if i == 0:
+                eye_size = 3
+                pygame.draw.circle(screen, WHITE, 
+                                 (rect.centerx - 3, rect.centery - 2), eye_size)
+                pygame.draw.circle(screen, WHITE,
+                                 (rect.centerx + 3, rect.centery - 2), eye_size)
+        
+        # Draw food
+        food_rect = pygame.Rect(
+            self.food[0] * GRID_SIZE + 1,
+            self.food[1] * GRID_SIZE + 1,
+            GRID_SIZE - 2,
+            GRID_SIZE - 2
+        )
+        pygame.draw.rect(screen, RED, food_rect)
+        # Add shine to food
+        shine_rect = pygame.Rect(
+            self.food[0] * GRID_SIZE + 4,
+            self.food[1] * GRID_SIZE + 4,
+            6, 6
+        )
+        pygame.draw.rect(screen, YELLOW, shine_rect)
+        
+        # Draw UI
+        font = pygame.font.Font(None, 36)
+        score_text = font.render(f'Score: {self.score}', True, WHITE)
+        high_score_text = font.render(f'High: {self.high_score}', True, YELLOW)
+        screen.blit(score_text, (10, 10))
+        screen.blit(high_score_text, (10, 50))
+        
+        # Game over screen
+        if self.game_state == 'game_over':
+            overlay = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
+            overlay.set_alpha(200)
+            overlay.fill(BLACK)
+            screen.blit(overlay, (0, 0))
+            
+            game_over_font = pygame.font.Font(None, 72)
+            instruction_font = pygame.font.Font(None, 36)
+            
+            game_over_text = game_over_font.render('GAME OVER', True, RED)
+            final_score_text = instruction_font.render(f'Final Score: {self.score}', True, WHITE)
+            restart_text = instruction_font.render('Press R to Restart', True, GREEN)
+            quit_text = instruction_font.render('Press Q to Quit', True, WHITE)
+            
+            screen.blit(game_over_text, 
+                       (SCREEN_WIDTH // 2 - game_over_text.get_width() // 2, 200))
+            screen.blit(final_score_text,
+                       (SCREEN_WIDTH // 2 - final_score_text.get_width() // 2, 300))
+            screen.blit(restart_text,
+                       (SCREEN_WIDTH // 2 - restart_text.get_width() // 2, 370))
+            screen.blit(quit_text,
+                       (SCREEN_WIDTH // 2 - quit_text.get_width() // 2, 410))
+        
+        pygame.display.flip()
+
+# Main game loop
+game = SnakeGame()
+running = True
+
+while running:
+    running = game.handle_input()
+    game.update()
+    game.draw()
+    clock.tick(game.fps)
+
+pygame.quit()
+sys.exit()
+```
+
+## 🎨 Visual Enhancements Explained
+
+### Grid Background
+
+```{python}
+# Drawing a grid helps visualize the game space
+print("📐 Grid Drawing:")
+print("  Vertical lines: Every 20 pixels horizontally")
+print("  Horizontal lines: Every 20 pixels vertically")
+print("  Color: Light gray for subtle effect")
+print("\nThis helps players see the grid-based movement!")
+```
+
+### Snake Head vs Body
+
+```{python}
+# Visual distinction improves gameplay
+print("🐍 Snake Visual Hierarchy:")
+print("  Head: Bright GREEN + eyes")
+print("  Body: Dark GREEN")
+print("  Benefit: Players instantly know snake's direction")
+```
+
+### Game State Management
+
+```{python}
+# Different screens for different states
+game_states = {
+    "playing": "Normal gameplay",
+    "game_over": "Show score, allow restart",
+    "paused": "Game frozen (optional feature)",
+    "menu": "Start screen (optional feature)"
+}
+
+print("🎮 Game States:")
+for state, description in game_states.items():
+    print(f"  {state}: {description}")
+```
+
+## 🏆 Advanced Challenges
+
+::: {.challenge-box}
+**Challenge 1: Add Pause Feature**
+
+Add ability to pause/unpause with SPACE key:
+- Show "PAUSED" overlay
+- Freeze all game logic
+- Resume when SPACE pressed again
+
+**Challenge 2: Obstacles**
+
+Add walls in the middle of the screen:
+- Create a list of obstacle positions
+- Draw them in a different color
+- Check collision with obstacles
+
+**Challenge 3: Different Food Types**
+
+Create multiple food types:
+- Normal food: +1 point (red)
+- Golden food: +5 points (yellow, rare)
+- Speed boost: Temporarily faster (blue)
+
+**Challenge 4: Score Multiplier**
+
+Add combo system:
+- Eating food quickly increases multiplier
+- Multiplier resets if you wait too long
+- Display current multiplier
+:::
+
+## 🎵 Adding Sound (Optional)
+
+```python
+# Add this to your game
+# Load sounds (create simple beeps or use free sound files)
+# eat_sound = pygame.mixer.Sound('eat.wav')
+# game_over_sound = pygame.mixer.Sound('game_over.wav')
+
+# Play when eating food:
+# eat_sound.play()
+
+# Play on game over:
+# game_over_sound.play()
+
+print("🎵 Sound enhances the game experience!")
+print("  Find free sounds at: freesound.org")
+```
+
+## 📊 Complete Feature List
+
+Our enhanced Snake game now has:
+
+✅ Smooth grid-based movement  
+✅ Score tracking  
+✅ High score persistence  
+✅ Game over screen  
+✅ Restart functionality  
+✅ Visual grid background  
+✅ Distinguished snake head  
+✅ Speed increases with score  
+✅ Clean UI display  
+
+## 🚀 What's Next?
+
+Now that you've mastered Snake, let's build something even more exciting: **Space Invaders**!
+
+We'll learn:
+- Sprite-based graphics using matrices
+- Projectile physics
+- Wave-based enemies
+- More complex game states
+
+---
+
+::: {.navigation-box}
+**Previous**: [2.3 Snake Part 1](03-snake-game-1.qmd) | **Next**: [2.5 Space Invaders](05-space-invaders.qmd)
+:::

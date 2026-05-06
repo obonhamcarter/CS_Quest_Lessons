@@ -1,0 +1,200 @@
+---
+title: "Projects - Build Real Applications"
+subtitle: "Take Your Skills to the Next Level with Hands-On Projects"
+---
+
+## 🚀 Welcome to CS Projects!
+
+You've learned the fundamentals—now it's time to **build something amazing**! These project chapters will teach you real-world tools and techniques used by professional developers.
+
+::: {.hero-box}
+### Why Projects Matter
+
+Moving from tutorials to projects is the **biggest leap** in your coding journey. Projects teach you:
+
+- 🔧 **Real Tools**: UV, Pygame, Manim—used by professionals
+- 🎯 **Problem Solving**: Debug, iterate, and polish your work
+- 💼 **Portfolio Building**: Showcase your skills to employers or schools
+- 🎨 **Creative Expression**: Build what YOU want to create
+- 🌟 **Confidence**: Prove to yourself that you CAN build real applications
+:::
+
+## 📊 Chapter 1: UV & Data Analysis
+
+**What You'll Build**: A complete data analysis pipeline with visualization
+
+**Skills You'll Learn**:
+- Modern Python package management with UV
+- Data manipulation with pandas
+- Creating beautiful visualizations with matplotlib
+- Statistical analysis and reporting
+- Building reproducible data science projects
+
+**Prerequisites**: Basic Python (variables, loops, functions)
+
+**Time**: ~2-3 hours
+
+::: {.chapter-card}
+[🚀 Start Chapter 1: UV & Data Analysis](projects/uv/01-intro-uv.qmd){.btn .btn-primary}
+
+**6 Progressive Lessons**:
+1. Meet UV - Modern Package Management
+2. Installing UV & First Project
+3. Data Magic with Pandas
+4. Visualizing Data with Matplotlib
+5. Real-World Data Analysis Project
+6. Advanced Topics & Next Steps
+:::
+
+---
+
+## 🎮 Chapter 2: Pygame - Build Games
+
+**What You'll Build**: Classic games—Snake and Space Invaders
+
+**Skills You'll Learn**:
+- Game loop architecture
+- Event handling and user input
+- Sprite management with matrices
+- Collision detection
+- Game state management
+- Visual polish and "game juice"
+
+**Prerequisites**: Basic Python + understanding of lists/loops
+
+**Time**: ~3-4 hours
+
+::: {.chapter-card}
+[🎮 Start Chapter 2: Pygame](projects/pygame/01-intro-pygame.qmd){.btn .btn-primary}
+
+**6 Progressive Lessons**:
+1. Welcome to Pygame
+2. Setting Up & Your First Window
+3. Building Snake - Part 1
+4. Building Snake - Part 2
+5. Building Space Invaders
+6. Advanced Game Development
+:::
+
+---
+
+## 🎨 Chapter 3: Manim - Math Animations
+
+**What You'll Build**: Beautiful mathematical visualizations and animations
+
+**Skills You'll Learn**:
+- Creating precise mathematical animations
+- Working with 3D graphics
+- Visualizing calculus concepts
+- Rendering publication-quality videos
+- Combining code with mathematical notation
+
+**Prerequisites**: Basic Python + interest in mathematics
+
+**Time**: ~2-3 hours
+
+::: {.chapter-card}
+[🎨 Start Chapter 3: Manim](projects/manim/01-intro-manim.qmd){.btn .btn-primary}
+
+**Comprehensive Guide**:
+1. Welcome to Manim
+2. Installing Manim & First Scene
+3. Complete Guide: Functions, 3D, and Final Projects
+:::
+
+---
+
+## 🎯 How to Use These Projects
+
+### For Maximum Learning:
+
+1. **Follow in Order**: Each chapter builds on previous concepts
+2. **Type the Code**: Don't copy-paste—type it yourself to build muscle memory
+3. **Experiment**: Modify examples and see what happens
+4. **Complete Challenges**: Each chapter has practice challenges
+5. **Build Your Own**: Use these as springboards for your own ideas
+
+### Choose Your Path:
+
+- **Data Enthusiast?** → Start with UV & Data Analysis
+- **Game Developer?** → Jump to Pygame
+- **Math Lover?** → Explore Manim first
+- **Complete Learner?** → Work through all three!
+
+## 💡 Project Ideas After Completion
+
+Once you finish these chapters, you'll be ready to build:
+
+### Data Analysis Projects
+- Personal finance tracker
+- Sports statistics dashboard
+- Social media analytics
+- Stock market analyzer
+
+### Game Development Projects
+- Platformer games
+- Puzzle games (Tetris, Sudoku)
+- Tower defense
+- Multiplayer games
+
+### Animation Projects
+- Educational math videos
+- Science visualizations
+- Creative art projects
+- Presentation graphics
+
+## 🌟 What Makes These Projects Special?
+
+::: {.feature-grid}
+### 🎓 Educational
+Clear explanations, progressive difficulty, and real-world context
+
+### 💻 Interactive
+Run code in your browser with JupyterLite or download notebooks
+
+### 🎨 Creative
+Build projects that are fun, visual, and shareable
+
+### 🚀 Modern
+Learn tools and techniques used by professionals today
+:::
+
+## 📚 Additional Resources
+
+### Communities
+- **Discord Servers**: Join Python, Pygame, and Manim communities
+- **Reddit**: r/Python, r/pygame, r/learnpython
+- **Stack Overflow**: Get help when you're stuck
+
+### Next Steps
+- Build a portfolio website with your projects
+- Contribute to open-source projects
+- Create tutorials to teach others
+- Apply for internships or research positions
+
+## 🏆 Your Journey
+
+```
+Basic Python Lessons → Projects → Real-World Applications → Career!
+        ✅              ← You are here
+```
+
+You've learned the fundamentals. Now it's time to **build**!
+
+::: {.success-box}
+**🎉 Ready to Level Up?**
+
+Pick a chapter that excites you and dive in. Remember: every expert was once a beginner who didn't give up. You've got this!
+:::
+
+---
+
+::: {.navigation-links}
+**Choose Your Adventure**:
+
+- [📊 Chapter 1: UV & Data Analysis](projects/uv/01-intro-uv.qmd)
+- [🎮 Chapter 2: Pygame - Build Games](projects/pygame/01-intro-pygame.qmd)
+- [🎨 Chapter 3: Manim - Math Animations](projects/manim/01-intro-manim.qmd)
+- [🏠 Back to Home](index.qmd)
+- [📚 All Quests](all-quests.qmd)
+:::

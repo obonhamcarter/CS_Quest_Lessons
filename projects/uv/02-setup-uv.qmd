@@ -1,0 +1,256 @@
+---
+title: "Chapter 1.2: Installing UV & Creating Your First Project"
+subtitle: "Get UV Running and Build a Data Analysis Project"
+format:
+  live-html:
+    code-tools: true
+execute:
+  eval: false
+---
+
+::: {.quest-badge}
+🚀 PROJECT 1.2 | Difficulty: Intermediate | Time: 15 minutes
+:::
+
+::: {.concept-box}
+**📊 Complexity Level: Intermediate ⭐⭐**
+
+Hands-on installation and project setup. You'll learn terminal commands and project structure—essential skills for any developer!
+:::
+
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/uv/02-setup-uv.ipynb)** - Full Jupyter environment in your browser
+- 📥 **[Download Notebook](../../files/projects/uv/02-setup-uv.ipynb)** - For use in local Jupyter or Google Colab
+- 💡 **Note**: Installing UV requires a terminal, so we'll show examples but you'll run this locally!
+:::
+
+## 📖 Installation: Getting UV on Your Computer
+
+UV works on macOS, Linux, and Windows. Let's get it installed!
+
+### Step 1: Install UV
+
+::: {.panel-tabset}
+## macOS/Linux
+
+Open your terminal and run:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+After installation, restart your terminal or run:
+
+```bash
+source $HOME/.cargo/env
+```
+
+## Windows
+
+Open PowerShell and run:
+
+```powershell
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+:::
+
+### Step 2: Verify Installation
+
+Check that UV is installed correctly:
+
+```bash
+uv --version
+```
+
+You should see something like: `uv 0.1.x`
+
+::: {.success-box}
+**✅ Success!** If you see a version number, UV is installed and ready to use!
+:::
+
+## 🏗️ Creating Your First Project
+
+Now let's create a data analysis project. We'll analyze student grades and create visualizations!
+
+### Initialize a New Project
+
+```bash
+# Create a new directory and navigate into it
+mkdir student-grades-analyzer
+cd student-grades-analyzer
+
+# Initialize UV project
+uv init
+```
+
+This creates a basic project structure:
+
+```
+student-grades-analyzer/
+├── pyproject.toml    # Project configuration
+├── README.md         # Project description
+└── .python-version   # Python version lock
+```
+
+::: {.info-box}
+**📝 What's `pyproject.toml`?**
+
+This is your project's configuration file. It tells UV:
+- What your project is called
+- Which Python version to use
+- Which packages your project depends on
+
+Think of it as your project's ID card!
+:::
+
+## 📦 Adding Dependencies
+
+Now let's add the packages we need for data analysis:
+
+```bash
+# Add pandas for data manipulation
+uv add pandas
+
+# Add matplotlib for creating charts
+uv add matplotlib
+
+# Add numpy for numerical operations
+uv add numpy
+```
+
+UV will:
+1. ⚡ Download and install each package (super fast!)
+2. 🔒 Create a `uv.lock` file to freeze exact versions
+3. 📋 Update `pyproject.toml` with your dependencies
+
+::: {.comparison-box}
+**⏱️ Speed Comparison**:
+
+Traditional pip might take **1-2 minutes** to install these packages.
+
+UV does it in **5-10 seconds**! 🚀
+:::
+
+## 📁 Understanding the Project Structure
+
+After adding dependencies, your project looks like this:
+
+```
+student-grades-analyzer/
+├── .venv/              # Virtual environment (UV creates this)
+├── pyproject.toml      # Project config with dependencies
+├── uv.lock             # Locked versions for reproducibility
+├── README.md
+└── .python-version
+```
+
+## 🎯 Let's Write Our First Script
+
+Create a file called `analyze_grades.py`:
+
+```{python}
+# analyze_grades.py
+# Our first UV-managed project!
+
+import pandas as pd
+import numpy as np
+
+def create_sample_data():
+    """Create sample student grades data"""
+    students = ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve']
+    
+    data = {
+        'Student': students,
+        'Math': np.random.randint(70, 100, 5),
+        'Science': np.random.randint(70, 100, 5),
+        'English': np.random.randint(70, 100, 5),
+        'History': np.random.randint(70, 100, 5)
+    }
+    
+    return pd.DataFrame(data)
+
+# Create and display the data
+df = create_sample_data()
+print("📊 Student Grades:")
+print(df)
+
+# Calculate average for each student
+df['Average'] = df[['Math', 'Science', 'English', 'History']].mean(axis=1)
+print("\n📈 With Averages:")
+print(df)
+
+# Find the top student
+top_student = df.loc[df['Average'].idxmax()]
+print(f"\n🏆 Top Student: {top_student['Student']} with {top_student['Average']:.2f} average!")
+```
+
+## ▶️ Running Your Project
+
+To run your script with UV:
+
+```bash
+# UV automatically uses the right Python and packages!
+uv run python analyze_grades.py
+```
+
+No need to activate a virtual environment—UV handles it automatically!
+
+::: {.pro-tip}
+**💡 Pro Tip**: The `uv run` command automatically uses your project's virtual environment. No more `source venv/bin/activate` needed!
+:::
+
+## 🔄 Common UV Commands
+
+Here are the most useful UV commands:
+
+```bash
+# Initialize a new project
+uv init
+
+# Add a package
+uv add package-name
+
+# Remove a package
+uv remove package-name
+
+# Run a script
+uv run python script.py
+
+# Show installed packages
+uv pip list
+
+# Update all packages
+uv lock --upgrade
+```
+
+## 🎮 Try It Yourself!
+
+1. **Create a new UV project** called `my-data-project`
+2. **Add pandas and matplotlib**
+3. **Create a simple script** that prints "Hello from UV!"
+4. **Run it** with `uv run python your_script.py`
+
+::: {.challenge-box}
+**🏆 Challenge**: 
+
+Modify the `analyze_grades.py` script to:
+- Add a 'Grade Letter' column (A for 90+, B for 80+, etc.)
+- Calculate class averages per subject
+- Find which subject has the highest class average
+:::
+
+## 🚀 What's Next?
+
+Now that you have UV set up and a working project, in the next slide we'll:
+- Dive deeper into pandas for data manipulation
+- Load data from files (CSV, Excel)
+- Clean and transform real-world data
+
+---
+
+::: {.navigation-box}
+**Previous**: [1.1 Meet UV](01-intro-uv.qmd) | **Next**: [1.3 Data Magic with Pandas](03-pandas-basics.qmd)
+:::

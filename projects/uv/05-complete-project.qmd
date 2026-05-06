@@ -1,0 +1,451 @@
+---
+title: "Chapter 1.5: Real-World Data Analysis Project"
+subtitle: "Build a Complete Analysis from Start to Finish"
+format:
+  live-html:
+    code-tools: true
+execute:
+  eval: false
+---
+
+::: {.quest-badge}
+🚀 PROJECT 1.5 | Difficulty: Intermediate | Time: 30 minutes
+:::
+
+::: {.concept-box}
+**📊 Complexity Level: Intermediate ⭐⭐⭐**
+
+This is where it all comes together! Build a complete data analysis project using everything you've learned.
+:::
+
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/uv/05-complete-project.ipynb)** - Full Jupyter environment in your browser
+- ▶️ **Run code directly below** - All code cells on this page are editable and runnable
+- 📥 **[Download Notebook](../../files/projects/uv/05-complete-project.ipynb)** - For use in local Jupyter or Google Colab
+:::
+
+## 📖 Project Overview: Student Performance Analytics
+
+We're going to build a **complete data analysis system** that:
+1. 📥 Generates realistic student data (or loads from CSV)
+2. 🧹 Cleans and validates the data
+3. 📊 Performs statistical analysis
+4. 📈 Creates insightful visualizations
+5. 📝 Generates a summary report
+
+This mirrors what data analysts do in the real world!
+
+::: {.story-box}
+**🎯 Real-World Scenario**: 
+
+You're a data analyst at a university. The administration wants to understand:
+- Which programs have the strongest students?
+- Do scholarships correlate with better performance?
+- What factors predict student success?
+
+Your job: analyze the data and present clear insights!
+:::
+
+## 🛠️ Step 1: Generate Realistic Data
+
+First, let's create a comprehensive dataset:
+
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from datetime import datetime, timedelta
+
+# Set random seed for reproducibility
+np.random.seed(42)
+
+# Generate student data
+n_students = 200
+
+def generate_student_data(n):
+    """Generate realistic student performance data"""
+    
+    # Basic info
+    data = {
+        'StudentID': [f'STU{str(i).zfill(4)}' for i in range(1, n+1)],
+        'Name': [f'Student_{i}' for i in range(1, n+1)],
+        'Major': np.random.choice(
+            ['Computer Science', 'Mathematics', 'Biology', 'Physics', 'Engineering'],
+            n,
+            p=[0.25, 0.15, 0.20, 0.15, 0.25]
+        ),
+        'Year': np.random.choice([1, 2, 3, 4], n, p=[0.3, 0.3, 0.25, 0.15]),
+        'Age': np.random.randint(18, 26, n),
+    }
+    
+    df = pd.DataFrame(data)
+    
+    # Generate correlated performance metrics
+    base_ability = np.random.normal(75, 15, n)
+    
+    df['StudyHours'] = np.clip(np.random.normal(15, 8, n), 3, 40).round(1)
+    df['Attendance'] = np.clip(base_ability + np.random.normal(0, 10, n), 50, 100).round(1)
+    df['MidtermScore'] = np.clip(base_ability + np.random.normal(0, 12, n), 40, 100).round(1)
+    df['FinalScore'] = np.clip(base_ability * 0.7 + df['MidtermScore'] * 0.3 + np.random.normal(0, 8, n), 40, 100).round(1)
+    df['ProjectsCompleted'] = np.random.poisson(df['StudyHours'] / 4, n)
+    
+    # Calculate GPA (weighted average)
+    df['GPA'] = ((df['MidtermScore'] * 0.3 + df['FinalScore'] * 0.7) / 25).round(2)
+    df['GPA'] = np.clip(df['GPA'], 0, 4.0)
+    
+    # Scholarship based on performance
+    scholarship_threshold = df['GPA'].quantile(0.7)
+    df['Scholarship'] = df['GPA'] >= scholarship_threshold
+    
+    # Academic standing
+    df['Standing'] = pd.cut(df['GPA'], 
+                            bins=[0, 2.0, 2.5, 3.0, 3.5, 4.0],
+                            labels=['Probation', 'Fair', 'Good', 'Very Good', 'Excellent'])
+    
+    return df
+
+# Generate the dataset
+students = generate_student_data(n_students)
+
+print("📊 Dataset Generated!")
+print(f"Total students: {len(students)}")
+print(f"\nFirst 10 students:")
+print(students.head(10))
+```
+
+## 🧹 Step 2: Data Cleaning and Validation
+
+```{python}
+# Data quality check
+def validate_data(df):
+    """Check data quality and report issues"""
+    issues = []
+    
+    # Check for missing values
+    missing = df.isnull().sum()
+    if missing.any():
+        issues.append(f"Missing values found: {missing[missing > 0].to_dict()}")
+    
+    # Check for duplicates
+    duplicates = df['StudentID'].duplicated().sum()
+    if duplicates > 0:
+        issues.append(f"Duplicate StudentIDs: {duplicates}")
+    
+    # Check value ranges
+    if (df['GPA'] < 0).any() or (df['GPA'] > 4).any():
+        issues.append("GPA values out of range (0-4)")
+    
+    if (df['Attendance'] < 0).any() or (df['Attendance'] > 100).any():
+        issues.append("Attendance values out of range (0-100)")
+    
+    if not issues:
+        return "✅ All data validation checks passed!"
+    else:
+        return "⚠️ Issues found:\n" + "\n".join(issues)
+
+print(validate_data(students))
+
+# Data summary
+print("\n📋 Data Summary:")
+print(f"Date range: {datetime.now().strftime('%Y-%m-%d')}")
+print(f"Total records: {len(students)}")
+print(f"Majors represented: {students['Major'].nunique()}")
+print(f"Year distribution: {students['Year'].value_counts().to_dict()}")
+```
+
+## 📊 Step 3: Statistical Analysis
+
+```{python}
+# Comprehensive statistical analysis
+def analyze_performance(df):
+    """Perform statistical analysis on student performance"""
+    
+    print("=" * 60)
+    print("📊 STUDENT PERFORMANCE ANALYSIS REPORT")
+    print("=" * 60)
+    
+    # Overall statistics
+    print("\n1️⃣ OVERALL STATISTICS")
+    print(f"   Average GPA: {df['GPA'].mean():.2f}")
+    print(f"   Median GPA: {df['GPA'].median():.2f}")
+    print(f"   GPA Std Dev: {df['GPA'].std():.2f}")
+    print(f"   Average Study Hours: {df['StudyHours'].mean():.1f} hours/week")
+    print(f"   Average Attendance: {df['Attendance'].mean():.1f}%")
+    
+    # Performance by major
+    print("\n2️⃣ PERFORMANCE BY MAJOR")
+    major_stats = df.groupby('Major').agg({
+        'GPA': ['mean', 'median', 'count'],
+        'StudyHours': 'mean',
+        'Attendance': 'mean'
+    }).round(2)
+    print(major_stats)
+    
+    # Scholarship analysis
+    print("\n3️⃣ SCHOLARSHIP ANALYSIS")
+    scholarship_stats = df.groupby('Scholarship')[['GPA', 'StudyHours']].mean()
+    print(scholarship_stats.round(2))
+    pct_scholarship = (df['Scholarship'].sum() / len(df)) * 100
+    print(f"   Students with scholarship: {pct_scholarship:.1f}%")
+    
+    # Year-wise progression
+    print("\n4️⃣ YEAR-WISE PROGRESSION")
+    year_stats = df.groupby('Year')['GPA'].agg(['mean', 'count']).round(2)
+    print(year_stats)
+    
+    # Academic standing distribution
+    print("\n5️⃣ ACADEMIC STANDING DISTRIBUTION")
+    standing_dist = df['Standing'].value_counts().sort_index()
+    for standing, count in standing_dist.items():
+        pct = (count / len(df)) * 100
+        print(f"   {standing}: {count} students ({pct:.1f}%)")
+    
+    # Correlation analysis
+    print("\n6️⃣ CORRELATION ANALYSIS")
+    correlations = df[['StudyHours', 'Attendance', 'MidtermScore', 'FinalScore', 'GPA']].corr()['GPA'].sort_values(ascending=False)
+    print("   Factors most correlated with GPA:")
+    for factor, corr in correlations.items():
+        if factor != 'GPA':
+            print(f"   {factor}: {corr:.3f}")
+    
+    print("\n" + "=" * 60)
+    
+    return df.groupby('Major')['GPA'].mean().sort_values(ascending=False)
+
+# Run analysis
+top_majors = analyze_performance(students)
+```
+
+## 📈 Step 4: Create Comprehensive Visualizations
+
+```{python}
+# Create a comprehensive dashboard
+fig = plt.figure(figsize=(16, 12))
+gs = fig.add_gridspec(3, 3, hspace=0.3, wspace=0.3)
+
+fig.suptitle('🎓 Student Performance Analytics Dashboard', fontsize=20, fontweight='bold', y=0.995)
+
+# 1. GPA Distribution
+ax1 = fig.add_subplot(gs[0, 0])
+ax1.hist(students['GPA'], bins=20, color='#3498db', edgecolor='black', alpha=0.7)
+ax1.axvline(students['GPA'].mean(), color='red', linestyle='--', linewidth=2, label=f'Mean: {students["GPA"].mean():.2f}')
+ax1.set_title('GPA Distribution', fontweight='bold')
+ax1.set_xlabel('GPA')
+ax1.set_ylabel('Number of Students')
+ax1.legend()
+ax1.grid(True, alpha=0.3)
+
+# 2. GPA by Major
+ax2 = fig.add_subplot(gs[0, 1])
+major_gpa = students.groupby('Major')['GPA'].mean().sort_values()
+colors = plt.cm.viridis(np.linspace(0.3, 0.9, len(major_gpa)))
+ax2.barh(major_gpa.index, major_gpa.values, color=colors, edgecolor='black')
+ax2.set_title('Average GPA by Major', fontweight='bold')
+ax2.set_xlabel('Average GPA')
+ax2.grid(True, alpha=0.3, axis='x')
+
+# 3. Students by Major
+ax3 = fig.add_subplot(gs[0, 2])
+major_counts = students['Major'].value_counts()
+ax3.bar(range(len(major_counts)), major_counts.values, color='#e74c3c', edgecolor='black')
+ax3.set_xticks(range(len(major_counts)))
+ax3.set_xticklabels(major_counts.index, rotation=45, ha='right')
+ax3.set_title('Student Enrollment by Major', fontweight='bold')
+ax3.set_ylabel('Number of Students')
+ax3.grid(True, alpha=0.3, axis='y')
+
+# 4. Study Hours vs GPA
+ax4 = fig.add_subplot(gs[1, 0])
+scatter = ax4.scatter(students['StudyHours'], students['GPA'], 
+                     c=students['Year'], cmap='coolwarm', 
+                     s=50, alpha=0.6, edgecolors='black', linewidth=0.5)
+ax4.set_title('Study Hours vs GPA (colored by year)', fontweight='bold')
+ax4.set_xlabel('Weekly Study Hours')
+ax4.set_ylabel('GPA')
+ax4.grid(True, alpha=0.3)
+plt.colorbar(scatter, ax=ax4, label='Year')
+
+# 5. Attendance vs Performance
+ax5 = fig.add_subplot(gs[1, 1])
+ax5.scatter(students['Attendance'], students['FinalScore'], 
+           alpha=0.5, color='#2ecc71', edgecolors='black', linewidth=0.5)
+ax5.set_title('Attendance vs Final Score', fontweight='bold')
+ax5.set_xlabel('Attendance %')
+ax5.set_ylabel('Final Score')
+ax5.grid(True, alpha=0.3)
+
+# 6. Scholarship Impact
+ax6 = fig.add_subplot(gs[1, 2])
+scholarship_data = students.groupby('Scholarship')['GPA'].mean()
+labels = ['No Scholarship', 'With Scholarship']
+colors_sch = ['#e74c3c', '#2ecc71']
+bars = ax6.bar(labels, scholarship_data.values, color=colors_sch, edgecolor='black', linewidth=2)
+ax6.set_title('Scholarship Impact on GPA', fontweight='bold')
+ax6.set_ylabel('Average GPA')
+ax6.grid(True, alpha=0.3, axis='y')
+for bar in bars:
+    height = bar.get_height()
+    ax6.text(bar.get_x() + bar.get_width()/2., height,
+             f'{height:.2f}', ha='center', va='bottom', fontweight='bold')
+
+# 7. Year-wise Performance
+ax7 = fig.add_subplot(gs[2, 0])
+year_gpa = students.groupby('Year')['GPA'].mean()
+ax7.plot(year_gpa.index, year_gpa.values, marker='o', linewidth=3, 
+         markersize=10, color='#9b59b6')
+ax7.set_title('GPA Progression by Year', fontweight='bold')
+ax7.set_xlabel('Year')
+ax7.set_ylabel('Average GPA')
+ax7.set_xticks([1, 2, 3, 4])
+ax7.grid(True, alpha=0.3)
+
+# 8. Academic Standing
+ax8 = fig.add_subplot(gs[2, 1])
+standing_counts = students['Standing'].value_counts()
+colors_pie = ['#e74c3c', '#f39c12', '#f1c40f', '#2ecc71', '#27ae60']
+ax8.pie(standing_counts.values, labels=standing_counts.index, autopct='%1.1f%%',
+        colors=colors_pie, startangle=90, textprops={'fontweight': 'bold'})
+ax8.set_title('Academic Standing Distribution', fontweight='bold')
+
+# 9. Projects Completed Distribution
+ax9 = fig.add_subplot(gs[2, 2])
+project_counts = students['ProjectsCompleted'].value_counts().sort_index()
+ax9.bar(project_counts.index, project_counts.values, color='#3498db', edgecolor='black')
+ax9.set_title('Projects Completed Distribution', fontweight='bold')
+ax9.set_xlabel('Number of Projects')
+ax9.set_ylabel('Number of Students')
+ax9.grid(True, alpha=0.3, axis='y')
+
+plt.savefig('student_analysis_dashboard.png', dpi=300, bbox_inches='tight')
+print("📊 Dashboard created and saved as 'student_analysis_dashboard.png'")
+plt.show()
+```
+
+## 📝 Step 5: Generate Summary Report
+
+```{python}
+def generate_summary_report(df):
+    """Generate a text summary report"""
+    
+    report = []
+    report.append("=" * 70)
+    report.append("📄 EXECUTIVE SUMMARY: STUDENT PERFORMANCE ANALYSIS")
+    report.append("=" * 70)
+    report.append(f"\nReport Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    report.append(f"Total Students Analyzed: {len(df)}")
+    
+    # Key findings
+    report.append("\n🔍 KEY FINDINGS:")
+    report.append(f"\n1. Overall Performance:")
+    report.append(f"   • Average GPA across all students: {df['GPA'].mean():.2f}")
+    report.append(f"   • {(df['GPA'] >= 3.5).sum()} students ({(df['GPA'] >= 3.5).sum() / len(df) * 100:.1f}%) achieved 'Excellent' status")
+    
+    # Best performing major
+    best_major = df.groupby('Major')['GPA'].mean().idxmax()
+    best_major_gpa = df.groupby('Major')['GPA'].mean().max()
+    report.append(f"\n2. Top Performing Major:")
+    report.append(f"   • {best_major} with average GPA of {best_major_gpa:.2f}")
+    
+    # Scholarship impact
+    scholarship_diff = df.groupby('Scholarship')['GPA'].mean().diff().iloc[-1]
+    report.append(f"\n3. Scholarship Impact:")
+    report.append(f"   • Students with scholarships have {scholarship_diff:.2f} higher GPA on average")
+    
+    # Study habits correlation
+    corr = df['StudyHours'].corr(df['GPA'])
+    report.append(f"\n4. Study Habits:")
+    report.append(f"   • Study hours correlation with GPA: {corr:.3f}")
+    report.append(f"   • Top performers study {df[df['GPA'] >= 3.5]['StudyHours'].mean():.1f} hours/week on average")
+    
+    # Recommendations
+    report.append("\n💡 RECOMMENDATIONS:")
+    report.append("   1. Encourage students to maintain at least 15 hours of study per week")
+    report.append("   2. Expand scholarship programs (shows positive correlation with performance)")
+    report.append("   3. Implement tutoring for students with attendance below 80%")
+    report.append(f"   4. Investigate best practices from {best_major} program")
+    
+    report.append("\n" + "=" * 70)
+    
+    return "\n".join(report)
+
+# Generate and print report
+summary = generate_summary_report(students)
+print(summary)
+
+# Save report to file
+with open('student_analysis_report.txt', 'w') as f:
+    f.write(summary)
+
+print("\n✅ Report saved to 'student_analysis_report.txt'")
+```
+
+## 🎮 Your Turn: Complete Analysis Challenge
+
+::: {.challenge-box}
+**🏆 Final Project Challenge:**
+
+Modify the analysis to answer these questions:
+
+1. **Which year has the most improvement potential?** (lowest GPA)
+2. **Do older students perform better?** (Age vs GPA correlation)
+3. **What's the relationship between midterm and final scores?**
+4. **Create a "risk score"** for students who might need help (low GPA + low attendance + low study hours)
+
+```{python}
+# Challenge solutions:
+
+# 1. Year with most improvement potential
+year_gpa_lowest = students.groupby('Year')['GPA'].mean().idxmin()
+print(f"1. Year {year_gpa_lowest} has the most improvement potential")
+
+# 2. Age vs GPA correlation
+age_gpa_corr = students['Age'].corr(students['GPA'])
+print(f"2. Age vs GPA correlation: {age_gpa_corr:.3f}")
+
+# 3. Midterm vs Final correlation
+midterm_final_corr = students['MidtermScore'].corr(students['FinalScore'])
+print(f"3. Midterm vs Final correlation: {midterm_final_corr:.3f}")
+
+# 4. Risk Score
+students['RiskScore'] = (
+    (4.0 - students['GPA']) * 0.4 +
+    ((100 - students['Attendance']) / 100) * 0.3 +
+    ((40 - students['StudyHours']) / 40).clip(0, 1) * 0.3
+)
+
+high_risk = students[students['RiskScore'] > 0.7]
+print(f"4. {len(high_risk)} students identified as high-risk")
+print("\nTop 5 high-risk students:")
+print(high_risk.nsmallest(5, 'GPA')[['StudentID', 'GPA', 'Attendance', 'StudyHours', 'RiskScore']])
+```
+:::
+
+## 🎉 Congratulations!
+
+You've built a complete data analysis project from scratch! This project demonstrates:
+
+✅ Data generation and loading  
+✅ Data cleaning and validation  
+✅ Statistical analysis  
+✅ Data visualization  
+✅ Report generation  
+✅ Actionable insights  
+
+These are **exactly the skills** data analysts use in real jobs!
+
+## 🚀 Next Steps
+
+Want to take this further?
+- Add more variables (sports participation, extracurriculars, etc.)
+- Load real CSV data instead of generated data
+- Build an interactive dashboard with Plotly
+- Create a web app with Streamlit
+- Use machine learning to predict student success
+
+---
+
+::: {.navigation-box}
+**Previous**: [1.4 Visualizing Data](04-matplotlib-viz.qmd) | **Next**: [1.6 Advanced Topics & Next Steps](06-advanced-uv.qmd)
+:::

@@ -1,0 +1,129 @@
+---
+title: "Chapter 1.1: Meet UV - Modern Python Package Management"
+subtitle: "The Fast and Reliable Way to Manage Python Projects"
+format:
+  live-html:
+    code-tools: true
+execute:
+  eval: false
+---
+
+::: {.quest-badge}
+🚀 PROJECT 1.1 | Difficulty: Intermediate | Time: 10 minutes
+:::
+
+::: {.concept-box}
+**📊 Complexity Level: Intermediate ⭐⭐**
+
+Perfect for students who have completed basic Python lessons. This project introduces real-world tools used by professional developers for managing Python projects and dependencies.
+:::
+
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/uv/01-intro-uv.ipynb)** - Full Jupyter environment in your browser
+- ▶️ **Run code directly below** - All code cells on this page are editable and runnable
+- 📥 **[Download Notebook](../../files/projects/uv/01-intro-uv.ipynb)** - For use in local Jupyter or Google Colab
+:::
+
+## 📖 Introduction: The Package Manager Revolution
+
+Imagine you're building a spaceship, but instead of crafting every single bolt and circuit yourself, you can order pre-made components from trusted manufacturers. That's what package managers do for programming!
+
+**UV** is a brand-new, blazingly fast Python package manager written in Rust. It's designed to replace older tools like pip and virtualenv with something much faster and more reliable.
+
+::: {.story-box}
+**🎯 Real-World Context**: Professional developers spend a lot of time managing dependencies—the external libraries and tools their projects need. UV makes this process 10-100x faster than traditional tools, and it ensures everyone on a team uses exactly the same versions of everything!
+:::
+
+## 💡 What is UV?
+
+**UV** is:
+- ⚡ **Super Fast**: Written in Rust, it's significantly faster than pip
+- 🔒 **Reliable**: Creates reproducible environments
+- 🎯 **Simple**: One tool for all package management needs
+- 🌐 **Modern**: Designed for today's Python development
+
+### Why Not Just Use pip?
+
+Great question! Here's a comparison:
+
+| Feature | pip + venv | UV |
+|---------|-----------|-----|
+| **Speed** | Slow | 10-100x faster |
+| **Dependency Resolution** | Basic | Advanced |
+| **Lock Files** | Manual | Automatic |
+| **Tool Management** | Separate tools | All-in-one |
+
+```{python}
+# This is what traditional Python setup looks like:
+# python -m venv myenv
+# source myenv/bin/activate  # or myenv\Scripts\activate on Windows
+# pip install pandas matplotlib
+# pip freeze > requirements.txt
+
+# With UV, it's simpler and faster!
+# uv init myproject
+# uv add pandas matplotlib
+# That's it! UV handles everything.
+
+print("🚀 UV makes Python project management a breeze!")
+print("In the next slides, we'll install UV and create our first project.")
+```
+
+## 🔑 Key Concepts
+
+### Package Managers
+A **package manager** is a tool that:
+- Downloads and installs libraries (packages)
+- Manages versions of those packages
+- Handles dependencies (when Package A needs Package B)
+- Creates isolated environments so projects don't interfere with each other
+
+### Virtual Environments
+Think of a virtual environment as a bubble around your project. Everything your project needs stays in the bubble, separate from other projects. This prevents conflicts when different projects need different versions of the same library.
+
+### Dependencies
+**Dependencies** are other packages your project needs to work. For example:
+- A data analysis project might depend on `pandas` and `matplotlib`
+- A web application might depend on `flask` and `requests`
+
+UV automatically tracks all dependencies and makes sure they work together!
+
+## 🎮 Why This Matters
+
+Learning modern tools like UV is important because:
+
+1. **Professional Development**: UV is being adopted by major companies and open-source projects
+2. **Time Savings**: Faster installs mean more time coding, less time waiting
+3. **Fewer Headaches**: Better dependency resolution means fewer "it works on my machine" problems
+4. **Future-Ready**: Understanding package management prepares you for any programming language
+
+::: {.fun-fact}
+**🌟 Fun Fact**: UV was created by the same team that built `ruff`, one of the fastest Python linters. They're passionate about making Python development faster and more enjoyable!
+:::
+
+## 🚀 What's Next?
+
+In the next slide, we'll:
+- Install UV on your computer
+- Create your first UV project
+- Add your first dependencies
+- See how much faster it is than traditional methods!
+
+::: {.challenge-box}
+**💭 Think About It**: 
+Have you ever worked on a project where you had to install lots of packages? How long did it take? UV can do in seconds what used to take minutes!
+:::
+
+## 📚 Additional Resources
+
+- [UV Official Documentation](https://docs.astral.sh/uv/)
+- [Why UV is Fast (Technical Deep Dive)](https://astral.sh/blog/uv)
+- [Python Package Management Overview](https://realpython.com/python-virtual-environments-a-primer/)
+
+---
+
+::: {.navigation-box}
+**Next**: [1.2 Installing UV & Creating Your First Project](02-setup-uv.qmd)
+:::

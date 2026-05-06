@@ -1,0 +1,199 @@
+---
+title: "Chapter 3.2: Installing Manim & Your First Animation"
+subtitle: "Get Manim Running and Create Your First Scene"
+format:
+  live-html:
+    code-tools: true
+---
+
+::: {.quest-badge}
+🎨 PROJECT 3.2 | Difficulty: Intermediate | Time: 15 minutes
+:::
+
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/manim/02-setup-manim.ipynb)**
+- 📥 **[Download Notebook](../../files/projects/manim/02-setup-manim.ipynb)**
+- 💡 **Note**: Manim requires FFmpeg and LaTeX for full functionality
+:::
+
+## 🚀 Installing Manim with UV
+
+**Option 1: Using UV (Recommended)**
+
+```bash
+# Create a new manim project
+mkdir manim-project
+cd manim-project
+
+# Initialize UV
+uv init
+
+# Add manim
+uv add manim
+
+# Manim also needs FFmpeg (for video) and LaTeX (for equations)
+```
+
+**Install Dependencies:**
+
+**macOS:**
+```bash
+brew install ffmpeg
+brew install --cask mactex-no-gui  # Or: brew install basictex
+```
+
+**Windows:**
+```bash
+# Install FFmpeg from ffmpeg.org
+# Install MiKTeX from miktex.org
+```
+
+**Linux:**
+```bash
+sudo apt install ffmpeg texlive-latex-base texlive-fonts-recommended
+```
+
+**Option 2: Quick Start (Jupyter/Online)**
+- Use [Manim Community Online](https://try.manim.community/)
+- Run in Google Colab with `!pip install manim`
+
+## 🎬 Your First Scene
+
+Create `first_scene.py`:
+
+```python
+from manim import *
+
+class HelloManim(Scene):
+    def construct(self):
+        # Create text
+        text = Text("Hello, Manim!", font_size=72)
+        
+        # Animate it
+        self.play(Write(text))
+        self.wait(2)
+        self.play(FadeOut(text))
+```
+
+**Render it:**
+```bash
+uv run manim -pql first_scene.py HelloManim
+```
+
+**Flags explained:**
+- `-p`: Preview after rendering
+- `-q`: Quality (l=low, m=medium, h=high, k=4K)
+- `-s`: Save last frame as image
+
+## 🎨 Basic Shapes
+
+```python
+from manim import *
+
+class BasicShapes(Scene):
+    def construct(self):
+        # Create shapes
+        circle = Circle(radius=1, color=BLUE)
+        square = Square(side_length=2, color=RED)
+        triangle = Triangle(color=GREEN)
+        
+        # Position them
+        circle.shift(LEFT * 3)
+        triangle.shift(RIGHT * 3)
+        
+        # Animate
+        self.play(Create(circle))
+        self.play(Create(square))
+        self.play(Create(triangle))
+        self.wait(1)
+        
+        # Transform
+        self.play(Transform(circle, square))
+        self.wait(1)
+```
+
+## 🎯 Colors and Styling
+
+```python
+from manim import *
+
+class ColorDemo(Scene):
+    def construct(self):
+        # Predefined colors
+        shapes = VGroup(
+            Circle(color=RED),
+            Circle(color=BLUE),
+            Circle(color=GREEN),
+            Circle(color=YELLOW),
+            Circle(color=PURPLE)
+        ).arrange(RIGHT, buff=0.5)
+        
+        # Custom colors (RGB or hex)
+        custom = Circle(color="#FF6B6B")
+        
+        # Opacity and fills
+        filled_circle = Circle()
+        filled_circle.set_fill(BLUE, opacity=0.7)
+        filled_circle.set_stroke(WHITE, width=3)
+        
+        self.play(Create(shapes))
+        self.wait(1)
+```
+
+## ✨ Animation Timing
+
+```python
+from manim import *
+
+class TimingExample(Scene):
+    def construct(self):
+        circle = Circle()
+        
+        # Sequential animations
+        self.play(Create(circle), run_time=2)  # Takes 2 seconds
+        self.wait(1)  # Pause for 1 second
+        self.play(circle.animate.shift(RIGHT * 2), run_time=1)
+        
+        # Simultaneous animations
+        square = Square().shift(LEFT * 2)
+        self.play(
+            FadeIn(square),
+            circle.animate.shift(DOWN),
+            run_time=1
+        )
+```
+
+## 🏆 Practice Challenges
+
+::: {.challenge-box}
+**Challenge 1: Shape Dance**
+
+Create a scene where:
+1. Three shapes (circle, square, triangle) appear
+2. They rotate 360 degrees simultaneously
+3. They change colors
+4. They disappear with different effects
+
+**Challenge 2: Name Animation**
+
+Animate your name:
+1. Write it letter by letter
+2. Change the color
+3. Make it grow and shrink
+4. Rotate it
+:::
+
+## 🚀 What's Next?
+
+Now that you can create and animate basic objects, we'll learn:
+- Mathematical functions and graphs
+- LaTeX equations
+- Complex transformations
+
+---
+
+::: {.navigation-box}
+**Previous**: [3.1 Intro to Manim](01-intro-manim.qmd) | **Next**: [3.3 Math Functions & Graphs](03-math-functions.qmd)
+:::

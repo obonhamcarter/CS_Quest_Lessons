@@ -1,0 +1,350 @@
+---
+title: "Chapter 2.1: Welcome to Pygame - Make Games with Python!"
+subtitle: "Turn Your Code into Interactive Adventures"
+format:
+  live-html:
+    code-tools: true
+execute:
+  eval: false
+---
+
+::: {.quest-badge}
+🎮 PROJECT 2.1 | Difficulty: Intermediate | Time: 10 minutes
+:::
+
+::: {.concept-box}
+**📊 Complexity Level: Intermediate ⭐⭐**
+
+Learn game development with Pygame! Perfect for students who know Python basics and want to build something interactive and fun.
+:::
+
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/pygame/01-intro-pygame.ipynb)** - Full Jupyter environment in your browser
+- 📥 **[Download Notebook](../../files/projects/pygame/01-intro-pygame.ipynb)** - For use in local Jupyter or Google Colab
+- 💡 **Note**: Pygame runs best locally with a display, but we'll show examples!
+:::
+
+## 📖 Introduction: Why Game Development?
+
+Ever wanted to create your own games? With **Pygame**, you can build:
+- 🐍 Classic games like Snake and Pong
+- 👾 Space shooters like Space Invaders
+- 🎮 Platformers, puzzle games, and more!
+
+Game development teaches:
+- **Event handling** - responding to keyboard and mouse input
+- **Graphics** - drawing shapes and managing sprites
+- **Game loops** - the heartbeat of every game
+- **Collision detection** - making objects interact
+- **Math & physics** - movement, gravity, and trajectories
+
+::: {.story-box}
+**🎯 Real-World Connection**: 
+
+Game development isn't just for fun! The skills you learn apply to:
+- **Mobile apps** (touch events, animations)
+- **Data visualizations** (interactive graphics)
+- **Simulations** (physics, modeling)
+- **UI/UX design** (user interaction patterns)
+
+Companies like NASA use game engines for training simulators, and medical professionals use them for surgical practice!
+:::
+
+## 🎮 What is Pygame?
+
+**Pygame** is a Python library that makes game development accessible. It provides:
+
+| Feature | What It Does |
+|---------|-------------|
+| **Display** | Create windows and draw graphics |
+| **Events** | Handle keyboard, mouse, and controller input |
+| **Sprites** | Manage game objects (characters, enemies, items) |
+| **Collision** | Detect when objects touch or overlap |
+| **Sound** | Play music and sound effects |
+| **Time** | Control game speed and frame rate |
+
+### Why Pygame?
+
+- ✅ **Python-based**: Use a language you already know!
+- ✅ **Simple**: Create a game in under 100 lines of code
+- ✅ **Powerful**: Build professional-looking games
+- ✅ **Cross-platform**: Works on Windows, Mac, and Linux
+- ✅ **Active community**: Tons of tutorials and examples
+
+## 🎯 Game Development Fundamentals
+
+### The Game Loop
+
+Every game has a "game loop" that runs continuously:
+
+```
+while game_running:
+    1. Handle events (keyboard, mouse, etc.)
+    2. Update game state (move objects, check collisions)
+    3. Draw everything to the screen
+    4. Control frame rate (60 FPS)
+```
+
+This loop runs 60 times per second in most games!
+
+```{python}
+# Pseudo-code for a game loop (conceptual)
+game_running = True
+clock_speed = 60  # Frames Per Second (FPS)
+
+# while game_running:
+#     # 1. Handle Events
+#     for event in get_events():
+#         if event.type == QUIT:
+#             game_running = False
+#         if event.type == KEYPRESS:
+#             handle_keypress(event.key)
+#     
+#     # 2. Update Game State
+#     player.move()
+#     check_collisions()
+#     update_score()
+#     
+#     # 3. Draw Everything
+#     screen.fill(BLACK)
+#     draw_player()
+#     draw_enemies()
+#     draw_score()
+#     
+#     # 4. Control Frame Rate
+#     wait(1/clock_speed)
+
+print("🎮 This is the pattern for EVERY game!")
+```
+
+::: {.info-box}
+**🕹️ FPS (Frames Per Second)**
+
+- **30 FPS**: Minimum for smooth motion
+- **60 FPS**: Standard for most games
+- **120+ FPS**: High-performance gaming
+
+A higher FPS means smoother gameplay!
+:::
+
+### Coordinates and Movement
+
+In Pygame, the screen is a grid of pixels:
+
+```
+(0,0) ────────────────────> X
+  │
+  │     Your Screen
+  │     (800 x 600 pixels)
+  │
+  │                     (800, 600)
+  ↓
+  Y
+```
+
+Important: **Y increases downward** (opposite of math class!)
+
+```{python}
+# Example: Moving objects
+class Position:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    def move_right(self, speed):
+        self.x += speed  # Move right = increase X
+    
+    def move_left(self, speed):
+        self.x -= speed  # Move left = decrease X
+    
+    def move_down(self, speed):
+        self.y += speed  # Move down = increase Y
+    
+    def move_up(self, speed):
+        self.y -= speed  # Move up = decrease Y
+    
+    def __str__(self):
+        return f"Position({self.x}, {self.y})"
+
+# Example usage
+player = Position(100, 100)
+print(f"Start: {player}")
+
+player.move_right(50)
+print(f"After moving right: {player}")
+
+player.move_down(30)
+print(f"After moving down: {player}")
+```
+
+### Colors in Pygame
+
+Colors are defined using RGB (Red, Green, Blue) values:
+
+```{python}
+# Colors are tuples of (Red, Green, Blue)
+# Each value ranges from 0-255
+
+# Common colors
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+YELLOW = (255, 255, 0)
+CYAN = (0, 255, 255)
+MAGENTA = (255, 0, 255)
+
+# Custom colors
+DARK_GRAY = (64, 64, 64)
+LIGHT_BLUE = (135, 206, 250)
+ORANGE = (255, 165, 0)
+
+# Color mixing example
+def mix_colors(color1, color2):
+    """Mix two colors by averaging their RGB values"""
+    r = (color1[0] + color2[0]) // 2
+    g = (color1[1] + color2[1]) // 2
+    b = (color1[2] + color2[2]) // 2
+    return (r, g, b)
+
+purple = mix_colors(RED, BLUE)
+print(f"Red + Blue = {purple}")
+
+olive = mix_colors(YELLOW, GREEN)
+print(f"Yellow + Green = {olive}")
+```
+
+## 🎮 Types of Games You'll Build
+
+### Snake Game 🐍
+
+Classic arcade game where you:
+- Control a snake that grows when eating food
+- Avoid hitting walls or yourself
+- Score points for each food item
+
+**Key Concepts**: Grid-based movement, collision detection, dynamic lists
+
+### Space Invaders 👾
+
+Retro shooter where you:
+- Control a spaceship
+- Shoot enemies moving across the screen
+- Dodge enemy bullets
+- Clear waves of invaders
+
+**Key Concepts**: Sprite management, projectile physics, game states
+
+### What Makes Games Fun?
+
+```{python}
+# Game design principles
+game_design = {
+    "Clear Goal": "Score 100 points, defeat all enemies",
+    "Challenge": "Difficulty increases over time",
+    "Feedback": "Visual/audio responses to actions",
+    "Reward": "Points, levels, achievements",
+    "Control": "Responsive, intuitive controls",
+}
+
+print("🎯 Elements of Fun Games:")
+for element, description in game_design.items():
+    print(f"  • {element}: {description}")
+```
+
+## 🚀 What You'll Learn
+
+By the end of this chapter, you'll be able to:
+
+✅ Set up Pygame and create game windows  
+✅ Handle keyboard and mouse events  
+✅ Draw shapes and images on screen  
+✅ Implement game physics and collision detection  
+✅ Build a complete Snake game  
+✅ Create a Space Invaders clone  
+✅ Understand sprite management with matrices  
+
+## 🎨 Game Development Workflow
+
+```{python}
+# Typical game development workflow
+workflow_steps = [
+    "1. 💡 Design: Plan your game mechanics",
+    "2. 🎨 Assets: Create or find graphics/sounds",
+    "3. ⚙️ Core Loop: Build the game loop",
+    "4. 🎮 Controls: Implement input handling",
+    "5. 🎯 Gameplay: Add game mechanics",
+    "6. 🐛 Debug: Test and fix issues",
+    "7. ✨ Polish: Add visual effects and audio",
+    "8. 🚀 Release: Share with the world!"
+]
+
+print("🎮 Game Development Workflow:")
+for step in workflow_steps:
+    print(f"  {step}")
+```
+
+::: {.fun-fact}
+**🌟 Fun Fact**: The first video game, "Pong," was created in 1972 and consisted of just two rectangles and a circle. Today, games are multi-billion dollar industries, but the core concepts remain the same!
+
+Many successful indie games were created by solo developers or small teams using tools like Pygame!
+:::
+
+## 🤔 Game Design Challenge
+
+Before we code, let's think like game designers:
+
+::: {.challenge-box}
+**💭 Design Exercise:**
+
+Think about your favorite game. Consider:
+1. **What's the main goal?** (e.g., reach the exit, defeat enemies, solve puzzles)
+2. **What makes it challenging?** (time limits, obstacles, complex puzzles)
+3. **What keeps you playing?** (progression, unlockables, story)
+4. **How do you control it?** (keyboard, mouse, touch)
+
+Now, sketch out a simple game idea:
+- What's the player's goal?
+- What obstacles will they face?
+- How will the difficulty increase?
+
+Write down your idea—we might build it later!
+:::
+
+## 📊 Pygame vs Other Game Engines
+
+How does Pygame compare to other tools?
+
+| Tool | Best For | Difficulty | Type |
+|------|----------|-----------|------|
+| **Pygame** | Learning, 2D games | Easy | Python library |
+| **Unity** | Professional 3D/2D | Medium | Full engine |
+| **Godot** | Indie 2D/3D games | Medium | Full engine |
+| **Scratch** | Absolute beginners | Very Easy | Visual programming |
+| **PyGame Zero** | Young programmers | Very Easy | Python library |
+
+Pygame is perfect for learning because:
+- You write actual Python code (not visual blocks)
+- It's not overwhelming like full engines
+- You understand what's happening "under the hood"
+- Skills transfer to other frameworks
+
+## 🚀 What's Next?
+
+In the next slide, we'll:
+- Install Pygame using UV
+- Create your first game window
+- Draw basic shapes
+- Handle keyboard input
+- Make things move!
+
+Get ready to see your code come to life! 🎮
+
+---
+
+::: {.navigation-box}
+**Next**: [2.2 Setting Up Pygame & First Window](02-setup-pygame.qmd)
+:::

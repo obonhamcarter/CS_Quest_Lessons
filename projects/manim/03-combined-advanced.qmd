@@ -1,0 +1,307 @@
+---
+title: "Chapter 3.3-3.6: Manim Complete Guide"
+subtitle: "Math Functions, 3D Graphics, and Final Projects"
+format:
+  live-html:
+    code-tools: true
+execute:
+  eval: false
+---
+
+::: {.quest-badge}
+🎨 PROJECTS 3.3-3.6 | Difficulty: Intermediate-Advanced
+:::
+
+## 3.3: Mathematical Functions & Graphs
+
+### Plotting Functions
+
+```python
+from manim import *
+
+class PlotFunction(Scene):
+    def construct(self):
+        # Create axes
+        axes = Axes(
+            x_range=[-5, 5, 1],
+            y_range=[-3, 3, 1],
+            axis_config={"color": BLUE}
+        )
+        
+        # Plot functions
+        parabola = axes.plot(lambda x: x**2 / 4, color=RED)
+        sine = axes.plot(lambda x: np.sin(x), color=GREEN)
+        
+        # Labels
+        labels = axes.get_axis_labels(x_label="x", y_label="f(x)")
+        
+        # Animate
+        self.play(Create(axes), Write(labels))
+        self.play(Create(parabola))
+        self.wait(1)
+        self.play(Transform(parabola, sine))
+        self.wait(1)
+```
+
+### LaTeX Equations
+
+```python
+class LatexDemo(Scene):
+    def construct(self):
+        # Beautiful mathematical notation
+        equation = MathTex(r"f(x) = \frac{1}{2}x^2 + 3x - 5")
+        equation.scale(1.5)
+        
+        self.play(Write(equation))
+        self.wait(1)
+        
+        # Transform to derivative
+        derivative = MathTex(r"f'(x) = x + 3")
+        derivative.scale(1.5)
+        
+        self.play(TransformMatchingTex(equation, derivative))
+        self.wait(1)
+```
+
+## 3.4: Calculus Visualizations
+
+### Derivative Visualization
+
+```python
+class DerivativeDemo(Scene):
+    def construct(self):
+        axes = Axes(x_range=[-3, 3], y_range=[-1, 9])
+        curve = axes.plot(lambda x: x**2, color=BLUE)
+        
+        # Moving tangent line
+        def get_tangent_line(x):
+            slope = 2 * x  # derivative of x^2
+            point = axes.c2p(x, x**2)
+            line = Line(
+                point + LEFT * 1.5 + DOWN * slope * 1.5,
+                point + RIGHT * 1.5 + UP * slope * 1.5,
+                color=RED
+            )
+            return line
+        
+        tangent = always_redraw(lambda: get_tangent_line(x_tracker.get_value()))
+        x_tracker = ValueTracker(-2)
+        
+        self.add(axes, curve, tangent)
+        self.play(x_tracker.animate.set_value(2), run_time=4)
+```
+
+### Area Under Curve (Integration)
+
+```python
+class IntegralDemo(Scene):
+    def construct(self):
+        axes = Axes(x_range=[0, 4], y_range=[0, 20])
+        curve = axes.plot(lambda x: x**2, color=BLUE)
+        
+        # Riemann rectangles
+        rectangles = axes.get_riemann_rectangles(
+            curve,
+            x_range=[0, 3],
+            dx=0.5,
+            color=YELLOW,
+            fill_opacity=0.5
+        )
+        
+        self.play(Create(axes), Create(curve))
+        self.play(Create(rectangles))
+        
+        # Show convergence
+        for dx in [0.2, 0.1, 0.05]:
+            new_rects = axes.get_riemann_rectangles(
+                curve, x_range=[0, 3], dx=dx,
+                color=YELLOW, fill_opacity=0.5
+            )
+            self.play(Transform(rectangles, new_rects))
+```
+
+## 3.5: 3D Graphics & Transformations
+
+### Basic 3D Scene
+
+```python
+class ThreeDDemo(ThreeDScene):
+    def construct(self):
+        # Set up 3D camera
+        self.set_camera_orientation(phi=75 * DEGREES, theta=30 * DEGREES)
+        
+        # Create 3D objects
+        axes = ThreeDAxes()
+        sphere = Sphere(radius=1, color=BLUE)
+        cube = Cube(side_length=2, color=RED)
+        
+        # Animate
+        self.play(Create(axes))
+        self.play(Create(sphere))
+        self.wait(1)
+        
+        # Rotate camera
+        self.begin_ambient_camera_rotation(rate=0.3)
+        self.wait(3)
+        self.stop_ambient_camera_rotation()
+        
+        # Transform
+        self.play(Transform(sphere, cube))
+        self.wait(1)
+```
+
+### Parametric Surfaces
+
+```python
+class ParametricSurfaceDemo(ThreeDScene):
+    def construct(self):
+        self.set_camera_orientation(phi=75 * DEGREES, theta=30 * DEGREES)
+        
+        # Create parametric surface (torus)
+        torus = Surface(
+            lambda u, v: np.array([
+                (2 + np.cos(v)) * np.cos(u),
+                (2 + np.cos(v)) * np.sin(u),
+                np.sin(v)
+            ]),
+            u_range=[0, TAU],
+            v_range=[0, TAU],
+            checkerboard_colors=[BLUE_D, BLUE_E]
+        )
+        
+        self.play(Create(torus), run_time=3)
+        self.begin_ambient_camera_rotation(rate=0.3)
+        self.wait(5)
+```
+
+## 3.6: Final Project - Pythagorean Theorem
+
+```python
+class PythagoreanTheorem(Scene):
+    def construct(self):
+        # Title
+        title = Text("Pythagorean Theorem", font_size=48)
+        title.to_edge(UP)
+        self.play(Write(title))
+        
+        # Create right triangle
+        triangle = Polygon(
+            ORIGIN, RIGHT * 3, RIGHT * 3 + UP * 4,
+            color=WHITE
+        )
+        triangle.shift(LEFT * 2 + DOWN * 1)
+        
+        self.play(Create(triangle))
+        
+        # Create squares on each side
+        # Square on side a (height = 4)
+        square_a = Square(side_length=4, color=BLUE, fill_opacity=0.5)
+        square_a.next_to(triangle, LEFT, buff=0)
+        square_a.align_to(triangle, DOWN)
+        
+        # Square on side b (base = 3)
+        square_b = Square(side_length=3, color=GREEN, fill_opacity=0.5)
+        square_b.next_to(triangle, DOWN, buff=0)
+        square_b.align_to(triangle, LEFT)
+        
+        # Square on hypotenuse c (length = 5)
+        square_c = Square(side_length=5, color=RED, fill_opacity=0.5)
+        square_c.rotate(np.arctan(4/3))
+        square_c.move_to(triangle.get_corner(UR) + UP * 2.5 + RIGHT * 2.5)
+        
+        self.play(FadeIn(square_a), FadeIn(square_b))
+        self.wait(1)
+        self.play(FadeIn(square_c))
+        
+        # Show equation
+        equation = MathTex(r"a^2 + b^2 = c^2")
+        equation.next_to(triangle, RIGHT, buff=1)
+        
+        values = MathTex(r"3^2 + 4^2 = 5^2")
+        values.next_to(equation, DOWN)
+        
+        result = MathTex(r"9 + 16 = 25")
+        result.next_to(values, DOWN)
+        
+        self.play(Write(equation))
+        self.wait(1)
+        self.play(Write(values))
+        self.wait(1)
+        self.play(Write(result))
+        self.wait(2)
+```
+
+## 🏆 Advanced Project Ideas
+
+::: {.challenge-box}
+**Project 1: Fourier Series**
+Visualize how sinusoids combine to approximate any periodic function
+
+**Project 2: Matrix Transformations**
+Show how matrices rotate, scale, and shear vectors in 2D/3D
+
+**Project 3: Sorting Algorithms**
+Animate bubble sort, merge sort, quick sort side by side
+
+**Project 4: Neural Network**
+Visualize forward and backward propagation
+
+**Project 5: Mandelbrot Set**
+Zoom into the famous fractal
+:::
+
+## 📚 Resources & Next Steps
+
+### Learning More
+- **Manim Community Docs**: docs.manim.community
+- **3Blue1Brown Channel**: YouTube for inspiration
+- **Theorem of Beethoven**: Manim tutorials on YouTube
+
+### Where to Run Manim
+- **Locally**: Full control, best performance
+- **Google Colab**: Free, cloud-based
+- **try.manim.community**: Online editor
+
+### Share Your Work
+- **YouTube**: Create educational content
+- **Twitter/X**: Share short clips
+- **GitHub**: Open-source your animations
+
+## 🎉 Congratulations!
+
+You now know:
+- ✅ Basic Manim setup and rendering
+- ✅ Shapes, colors, and animations
+- ✅ Mathematical functions and graphs
+- ✅ LaTeX equations
+- ✅ Calculus visualizations
+- ✅ 3D graphics and transformations
+- ✅ Complete project workflows
+
+## 🚀 Your Journey Continues
+
+You've completed all three chapters:
+1. **UV & Data Analysis** - Professional Python workflows
+2. **Pygame** - Game development
+3. **Manim** - Mathematical animations
+
+These skills open doors to:
+- 🎓 Education technology
+- 📊 Data visualization
+- 🎮 Game development
+- 🎨 Creative coding
+- 🤖 Scientific computing
+
+::: {.success-box}
+**🌟 You've Leveled Up!**
+
+You're no longer just learning programming—you're creating experiences, teaching concepts, and building projects that inspire others.
+
+The best way to solidify these skills: **build something that excites YOU**. Pick a project, start small, iterate, and share it with the world!
+:::
+
+---
+
+::: {.navigation-box}
+**Previous**: [3.2 Setup Manim](02-setup-manim.qmd) | **Home**: [All Projects](../../all-quests.qmd)
+:::

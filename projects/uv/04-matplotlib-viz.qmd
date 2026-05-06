@@ -1,0 +1,346 @@
+---
+title: "Chapter 1.4: Visualizing Data with Matplotlib"
+subtitle: "Turn Numbers into Beautiful, Insightful Charts"
+format:
+  live-html:
+    code-tools: true
+execute:
+  eval: false
+---
+
+::: {.quest-badge}
+🚀 PROJECT 1.4 | Difficulty: Intermediate | Time: 20 minutes
+:::
+
+::: {.concept-box}
+**📊 Complexity Level: Intermediate ⭐⭐**
+
+Learn to create professional visualizations! Matplotlib is the foundation of data visualization in Python.
+:::
+
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/uv/04-matplotlib-viz.ipynb)** - Full Jupyter environment in your browser
+- ▶️ **Run code directly below** - All code cells on this page are editable and runnable
+- 📥 **[Download Notebook](../../files/projects/uv/04-matplotlib-viz.ipynb)** - For use in local Jupyter or Google Colab
+:::
+
+## 📖 Introduction: Why Visualize Data?
+
+Numbers tell a story, but visualizations make that story **instantly understandable**. Compare these:
+
+- **Numbers**: "The average GPA for CS students is 3.45, Math is 3.52, Biology is 3.38"
+- **Visualization**: A colorful bar chart showing all majors at a glance! 📊
+
+::: {.story-box}
+**🎯 Real-World Use**: When data scientists at Netflix want to show how viewing patterns change throughout the day, they don't present a table of millions of numbers—they create a visualization that executives can understand in seconds!
+:::
+
+## 🎨 Introduction to Matplotlib
+
+**Matplotlib** is Python's most popular plotting library. It can create:
+- 📊 Bar charts
+- 📈 Line graphs
+- 🎯 Scatter plots
+- 🥧 Pie charts
+- And much more!
+
+Let's start simple:
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+# Create simple data
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 6, 8, 10]
+
+# Create a basic line plot
+plt.figure(figsize=(8, 5))
+plt.plot(x, y, marker='o', color='blue', linewidth=2)
+plt.title('My First Matplotlib Plot', fontsize=16, fontweight='bold')
+plt.xlabel('X Values')
+plt.ylabel('Y Values')
+plt.grid(True, alpha=0.3)
+plt.show()
+
+print("📊 Your first plot is ready!")
+```
+
+## 📊 Different Types of Plots
+
+### Bar Chart
+
+Perfect for comparing categories:
+
+```{python}
+# Student enrollment by major
+majors = ['CS', 'Math', 'Biology', 'Physics', 'Engineering']
+enrollments = [45, 32, 38, 28, 41]
+
+plt.figure(figsize=(10, 6))
+colors = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6']
+plt.bar(majors, enrollments, color=colors, edgecolor='black', linewidth=1.5)
+plt.title('Student Enrollment by Major', fontsize=16, fontweight='bold')
+plt.xlabel('Major', fontsize=12)
+plt.ylabel('Number of Students', fontsize=12)
+plt.ylim(0, 50)
+
+# Add value labels on top of bars
+for i, v in enumerate(enrollments):
+    plt.text(i, v + 1, str(v), ha='center', fontweight='bold')
+
+plt.show()
+print("📊 Bar chart shows which majors are most popular!")
+```
+
+### Line Graph
+
+Great for showing trends over time:
+
+```{python}
+# Student GPA over semesters
+semesters = ['Fall 2023', 'Spring 2024', 'Fall 2024', 'Spring 2025']
+alice_gpa = [3.4, 3.6, 3.7, 3.8]
+bob_gpa = [3.2, 3.3, 3.5, 3.6]
+charlie_gpa = [3.8, 3.7, 3.9, 3.9]
+
+plt.figure(figsize=(10, 6))
+plt.plot(semesters, alice_gpa, marker='o', linewidth=2, label='Alice', color='#3498db')
+plt.plot(semesters, bob_gpa, marker='s', linewidth=2, label='Bob', color='#e74c3c')
+plt.plot(semesters, charlie_gpa, marker='^', linewidth=2, label='Charlie', color='#2ecc71')
+
+plt.title('Student GPA Progress Over Time', fontsize=16, fontweight='bold')
+plt.xlabel('Semester', fontsize=12)
+plt.ylabel('GPA', fontsize=12)
+plt.ylim(3.0, 4.0)
+plt.legend(fontsize=11)
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+
+print("📈 Line graph shows how students improve over time!")
+```
+
+### Scatter Plot
+
+Perfect for showing relationships between two variables:
+
+```{python}
+# Relationship between study hours and GPA
+np.random.seed(42)
+study_hours = np.random.uniform(5, 30, 50)
+gpa = 2.5 + (study_hours * 0.04) + np.random.normal(0, 0.15, 50)
+gpa = np.clip(gpa, 2.0, 4.0)  # Keep GPA in valid range
+
+plt.figure(figsize=(10, 6))
+plt.scatter(study_hours, gpa, s=100, alpha=0.6, c=gpa, cmap='viridis', edgecolors='black')
+plt.colorbar(label='GPA')
+plt.title('Relationship: Study Hours vs GPA', fontsize=16, fontweight='bold')
+plt.xlabel('Weekly Study Hours', fontsize=12)
+plt.ylabel('GPA', fontsize=12)
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+
+print("🎯 Scatter plot reveals: more study hours → higher GPA!")
+```
+
+### Histogram
+
+Shows the distribution of values:
+
+```{python}
+# Distribution of student ages
+ages = np.random.normal(21, 1.5, 200).astype(int)
+ages = np.clip(ages, 18, 25)
+
+plt.figure(figsize=(10, 6))
+plt.hist(ages, bins=range(18, 26), edgecolor='black', color='#3498db', alpha=0.7)
+plt.title('Distribution of Student Ages', fontsize=16, fontweight='bold')
+plt.xlabel('Age', fontsize=12)
+plt.ylabel('Number of Students', fontsize=12)
+plt.grid(True, alpha=0.3, axis='y')
+plt.tight_layout()
+plt.show()
+
+print("📊 Most students are around 21 years old!")
+```
+
+## 🎨 Customization: Make It Beautiful!
+
+### Multiple Subplots
+
+Create a dashboard of multiple charts:
+
+```{python}
+# Create sample data
+np.random.seed(42)
+students_df = pd.DataFrame({
+    'Major': np.random.choice(['CS', 'Math', 'Biology', 'Physics'], 100),
+    'GPA': np.random.uniform(2.5, 4.0, 100),
+    'Study_Hours': np.random.uniform(5, 30, 100),
+    'Age': np.random.randint(18, 25, 100)
+})
+
+# Create a 2x2 grid of plots
+fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+fig.suptitle('Student Data Dashboard', fontsize=18, fontweight='bold')
+
+# Plot 1: Major distribution
+major_counts = students_df['Major'].value_counts()
+axes[0, 0].bar(major_counts.index, major_counts.values, color='#3498db')
+axes[0, 0].set_title('Students by Major')
+axes[0, 0].set_ylabel('Count')
+
+# Plot 2: GPA distribution
+axes[0, 1].hist(students_df['GPA'], bins=15, color='#2ecc71', edgecolor='black')
+axes[0, 1].set_title('GPA Distribution')
+axes[0, 1].set_xlabel('GPA')
+axes[0, 1].set_ylabel('Frequency')
+
+# Plot 3: Study Hours vs GPA
+axes[1, 0].scatter(students_df['Study_Hours'], students_df['GPA'], alpha=0.5, color='#e74c3c')
+axes[1, 0].set_title('Study Hours vs GPA')
+axes[1, 0].set_xlabel('Weekly Study Hours')
+axes[1, 0].set_ylabel('GPA')
+
+# Plot 4: Average GPA by Major
+avg_gpa = students_df.groupby('Major')['GPA'].mean().sort_values()
+axes[1, 1].barh(avg_gpa.index, avg_gpa.values, color='#9b59b6')
+axes[1, 1].set_title('Average GPA by Major')
+axes[1, 1].set_xlabel('Average GPA')
+
+plt.tight_layout()
+plt.show()
+
+print("🎨 A complete dashboard in one view!")
+```
+
+## 💡 Styling and Themes
+
+```{python}
+# Using different styles
+styles = ['default', 'seaborn-v0_8-darkgrid', 'ggplot', 'bmh']
+
+fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+fig.suptitle('Same Data, Different Styles', fontsize=16, fontweight='bold')
+
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+for idx, (ax, style) in enumerate(zip(axes.flat, styles)):
+    with plt.style.context(style):
+        ax.plot(x, y, linewidth=2)
+        ax.set_title(f'Style: {style}')
+        ax.grid(True)
+
+plt.tight_layout()
+plt.show()
+
+print("🎨 Different styles change the entire look!")
+```
+
+## 📊 Real-World Example: Complete Analysis
+
+Let's create a complete analysis with pandas and matplotlib:
+
+```{python}
+# Create realistic student dataset
+np.random.seed(42)
+n_students = 100
+
+student_data = pd.DataFrame({
+    'StudentID': range(1, n_students + 1),
+    'Major': np.random.choice(['CS', 'Math', 'Biology', 'Physics', 'Engineering'], n_students),
+    'GPA': np.round(np.random.uniform(2.5, 4.0, n_students), 2),
+    'Study_Hours': np.random.randint(5, 35, n_students),
+    'Projects': np.random.randint(0, 10, n_students),
+    'Scholarship': np.random.choice([True, False], n_students, p=[0.3, 0.7])
+})
+
+# Analysis and visualization
+fig, axes = plt.subplots(1, 3, figsize=(16, 5))
+fig.suptitle('🎓 Complete Student Performance Analysis', fontsize=16, fontweight='bold')
+
+# Chart 1: GPA by Major
+major_gpa = student_data.groupby('Major')['GPA'].mean().sort_values()
+axes[0].barh(major_gpa.index, major_gpa.values, color='#3498db')
+axes[0].set_xlabel('Average GPA')
+axes[0].set_title('Average GPA by Major')
+axes[0].grid(True, alpha=0.3, axis='x')
+
+# Chart 2: Scholarship vs Non-Scholarship GPA
+scholarship_gpa = student_data.groupby('Scholarship')['GPA'].mean()
+labels = ['No Scholarship', 'Scholarship']
+colors = ['#e74c3c', '#2ecc71']
+axes[1].bar(labels, scholarship_gpa.values, color=colors, edgecolor='black')
+axes[1].set_ylabel('Average GPA')
+axes[1].set_title('GPA: Scholarship Impact')
+axes[1].grid(True, alpha=0.3, axis='y')
+
+# Chart 3: Projects vs GPA
+axes[2].scatter(student_data['Projects'], student_data['GPA'], 
+                alpha=0.5, s=50, c='#9b59b6', edgecolors='black')
+axes[2].set_xlabel('Number of Projects')
+axes[2].set_ylabel('GPA')
+axes[2].set_title('Projects Completed vs GPA')
+axes[2].grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+print("📊 Complete analysis shows multiple insights at once!")
+```
+
+## 🎮 Practice Challenges
+
+::: {.challenge-box}
+**🏆 Challenge 1: Create a Visualization**
+
+Create a bar chart showing:
+- Your top 5 favorite movies/games/books
+- Rate each from 1-10
+- Color bars based on rating (low=red, high=green)
+
+```{python}
+# Your code here!
+# Example solution:
+items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5']
+ratings = [8, 9, 7, 10, 8]
+
+plt.figure(figsize=(10, 6))
+colors_map = ['#e74c3c' if r < 7 else '#f39c12' if r < 9 else '#2ecc71' for r in ratings]
+plt.bar(items, ratings, color=colors_map, edgecolor='black')
+plt.title('My Top 5 Favorites', fontsize=14, fontweight='bold')
+plt.ylabel('Rating (out of 10)')
+plt.ylim(0, 10)
+plt.show()
+```
+:::
+
+::: {.challenge-box}
+**🏆 Challenge 2: Multi-Plot Dashboard**
+
+Create a 2x2 grid showing:
+1. Your weekly schedule (bar chart of hours per activity)
+2. Your mood over a week (line chart)
+3. Any scatter plot of your choice
+4. A histogram of something interesting
+:::
+
+## 🚀 What's Next?
+
+You now know both pandas and matplotlib! In the next slide, we'll:
+- Combine everything into a real data analysis project
+- Load data from CSV files
+- Clean, analyze, and visualize real-world data
+- Build a complete mini data science project!
+
+---
+
+::: {.navigation-box}
+**Previous**: [1.3 Data Magic with Pandas](03-pandas-basics.qmd) | **Next**: [1.5 Real World Data Analysis Project](05-complete-project.qmd)
+:::

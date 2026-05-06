@@ -1,0 +1,269 @@
+---
+title: "Chapter 3.1: Welcome to Manim - Math Animations!"
+subtitle: "Create Stunning Mathematical Visualizations with Python"
+format:
+  live-html:
+    code-tools: true
+execute:
+  eval: false
+---
+
+::: {.quest-badge}
+🎨 PROJECT 3.1 | Difficulty: Intermediate | Time: 10 minutes
+:::
+
+::: {.concept-box}
+**📊 Complexity Level: Intermediate ⭐⭐**
+
+Learn to create beautiful mathematical animations! Manim is the tool behind 3Blue1Brown's famous math videos.
+:::
+
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/manim/01-intro-manim.ipynb)**
+- 📥 **[Download Notebook](../../files/projects/manim/01-intro-manim.ipynb)**
+- 💡 **Note**: Manim renders videos locally, but examples work in notebooks!
+:::
+
+## 📖 What is Manim?
+
+**Manim** (Mathematical Animation Engine) is a Python library for creating precise, beautiful mathematical animations. It was created by Grant Sanderson (3Blue1Brown) for his YouTube channel.
+
+::: {.story-box}
+**🎯 Real-World Use**: 
+
+Manim is used by:
+- **Educators** - Visualize complex math concepts
+- **YouTubers** - Create educational content (3Blue1Brown, Numberphile)
+- **Researchers** - Present findings with clear animations
+- **Students** - Understand math through visualization
+
+If you've watched a math video with smooth animations of geometric transformations, calculus, or linear algebra—it was probably made with Manim!
+:::
+
+## 🎨 What Can You Create?
+
+```{python}
+# Manim can animate:
+manim_capabilities = {
+    "Geometric Shapes": "Squares, circles, polygons with transformations",
+    "Mathematical Functions": "Plot and animate f(x) = x², sine waves, etc.",
+    "3D Objects": "Spheres, cubes, surfaces in 3D space",
+    "LaTeX Equations": "Beautiful mathematical notation",
+    "Graphs and Networks": "Visualize relationships and structures",
+    "Custom Animations": "Move, rotate, scale, morph anything!",
+    "Text and Labels": "Annotate your visualizations"
+}
+
+print("🎨 Manim Capabilities:")
+for feature, description in manim_capabilities.items():
+    print(f"  • {feature}: {description}")
+```
+
+## 🌟 Why Learn Manim?
+
+### For Education
+- **Visualize Abstract Concepts**: See calculus derivatives, matrix transformations, probability
+- **Create Teaching Materials**: Make your own educational videos
+- **Deepen Understanding**: Building animations forces you to truly understand the math
+
+### For Communication
+- **Present Research**: Animate complex ideas for presentations
+- **Content Creation**: Build a YouTube channel or educational platform
+- **Portfolio**: Show technical and creative skills
+
+### For Fun!
+- **Artistic Code**: Combine programming with visual art
+- **Satisfying Results**: Watch beautiful animations you created
+- **Math Appreciation**: See the beauty in mathematics
+
+## 🎯 Manim Workflow
+
+```{python}
+# The typical Manim workflow
+workflow = [
+    "1. 💡 Define your scene (a Python class)",
+    "2. 🎨 Add objects (shapes, text, equations)",
+    "3. ✨ Create animations (move, transform, morph)",
+    "4. ⚙️ Render to video (Manim generates .mp4)",
+    "5. 📺 Share or present your visualization!"
+]
+
+print("🎬 Manim Workflow:")
+for step in workflow:
+    print(f"  {step}")
+```
+
+## 📐 Basic Concepts
+
+### Scenes
+
+A **Scene** is your canvas—everything happens within a scene:
+
+```python
+from manim import *
+
+class MyFirstScene(Scene):
+    def construct(self):
+        # All your animation code goes here
+        pass
+```
+
+### Mobjects (Mathematical Objects)
+
+**Mobject** = Mathematical Object. Everything you see is a Mobject:
+
+```{python}
+# Examples of Mobjects (conceptual)
+mobject_types = {
+    "Circle()": "A circle shape",
+    "Square()": "A square shape",
+    "Text('Hello')": "Text string",
+    "MathTex(r'x^2')": "LaTeX equation",
+    "Dot()": "A point",
+    "Arrow()": "An arrow",
+    "Line()": "A line segment",
+    "NumberPlane()": "Coordinate grid",
+}
+
+print("🎯 Common Mobjects:")
+for mobject, description in mobject_types.items():
+    print(f"  {mobject}: {description}")
+```
+
+### Animations
+
+Animations transform Mobjects over time:
+
+```{python}
+# Common animation types
+animations = {
+    "Create": "Draw/appear gradually",
+    "FadeIn/FadeOut": "Fade in or out",
+    "Transform": "Morph one object into another",
+    "MoveToTarget": "Move object to new position",
+    "Rotate": "Spin around",
+    "Write": "Write text/equations",
+    "ReplacementTransform": "Replace object with another",
+}
+
+print("✨ Common Animations:")
+for anim, description in animations.items():
+    print(f"  {anim}: {description}")
+```
+
+## 🎬 Your First Manim Code (Conceptual)
+
+```python
+# first_animation.py
+from manim import *
+
+class SimpleCircle(Scene):
+    def construct(self):
+        # Create a circle
+        circle = Circle()
+        circle.set_fill(BLUE, opacity=0.5)
+        circle.set_stroke(WHITE, width=4)
+        
+        # Animate the circle appearing
+        self.play(Create(circle))
+        self.wait(1)
+        
+        # Move it to the right
+        self.play(circle.animate.shift(RIGHT * 2))
+        self.wait(1)
+        
+        # Fade it out
+        self.play(FadeOut(circle))
+        self.wait(1)
+
+# Render with: manim -pql first_animation.py SimpleCircle
+# -p = preview, -q = quality (l=low, m=medium, h=high)
+```
+
+## 🎨 Manim vs Other Tools
+
+```{python}
+# Comparison with other tools
+tools_comparison = {
+    "Manim": {
+        "Best for": "Mathematical animations, precise control",
+        "Pros": "Code-based, beautiful output, reproducible",
+        "Cons": "Learning curve, render time",
+        "Language": "Python"
+    },
+    "After Effects": {
+        "Best for": "General video editing/effects",
+        "Pros": "Industry standard, visual interface",
+        "Cons": "Expensive, not math-focused",
+        "Language": "GUI + scripting"
+    },
+    "GeoGebra": {
+        "Best for": "Interactive geometry demos",
+        "Pros": "Easy for geometry, interactive",
+        "Cons": "Limited animation control",
+        "Language": "GUI"
+    },
+    "matplotlib": {
+        "Best for": "Static plots and simple animations",
+        "Pros": "Fast, familiar for data scientists",
+        "Cons": "Not designed for complex animations",
+        "Language": "Python"
+    }
+}
+
+print("🎨 Tool Comparison:")
+for tool, details in tools_comparison.items():
+    print(f"\n{tool}:")
+    for key, value in details.items():
+        print(f"  {key}: {value}")
+```
+
+## 🏆 What You'll Build
+
+By the end of this chapter, you'll create:
+
+1. **Basic Shapes & Transformations** - Circles, squares, morphing
+2. **Mathematical Functions** - Plot and animate f(x)
+3. **Calculus Visualization** - Derivatives and integrals
+4. **Linear Algebra** - Matrix transformations
+5. **3D Graphics** - Rotating 3D objects
+6. **Custom Animations** - Your own mathematical visualization!
+
+## 🤔 Is Manim Right for You?
+
+**Choose Manim if you want to:**
+- ✅ Create educational math content
+- ✅ Visualize complex mathematical concepts
+- ✅ Have precise control over animations
+- ✅ Code your animations (not drag-and-drop)
+- ✅ Create reproducible, version-controlled animations
+
+**Maybe not if:**
+- ❌ You need real-time interaction (try p5.js or Processing)
+- ❌ You want WYSIWYG editing (try After Effects)
+- ❌ You need fast turnaround (render times can be long)
+
+::: {.fun-fact}
+**🌟 Fun Fact**: Grant Sanderson's (3Blue1Brown) video on "The Essence of Calculus" has over 10 million views! Manim helped make calculus accessible and beautiful to millions of people worldwide.
+
+Many students report finally understanding linear algebra or calculus after watching Manim-powered visualizations!
+:::
+
+## 🚀 What's Next?
+
+In the next slides, we'll:
+- Install Manim (with UV!)
+- Create your first scene
+- Learn core animation techniques
+- Build increasingly complex visualizations
+- Create a final showcase project
+
+Get ready to see mathematics in a whole new way!
+
+---
+
+::: {.navigation-box}
+**Next**: [3.2 Installing Manim & First Scene](02-setup-manim.qmd)
+:::

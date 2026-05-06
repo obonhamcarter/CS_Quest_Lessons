@@ -1,0 +1,30 @@
+======================================================================
+📄 EXECUTIVE SUMMARY: STUDENT PERFORMANCE ANALYSIS
+======================================================================
+
+Report Generated: 2026-05-05 20:51:19
+Total Students Analyzed: 200
+
+🔍 KEY FINDINGS:
+
+1. Overall Performance:
+   • Average GPA across all students: 2.97
+   • 48 students (24.0%) achieved 'Excellent' status
+
+2. Top Performing Major:
+   • Biology with average GPA of 3.12
+
+3. Scholarship Impact:
+   • Students with scholarships have 1.09 higher GPA on average
+
+4. Study Habits:
+   • Study hours correlation with GPA: 0.108
+   • Top performers study 16.6 hours/week on average
+
+💡 RECOMMENDATIONS:
+   1. Encourage students to maintain at least 15 hours of study per week
+   2. Expand scholarship programs (shows positive correlation with performance)
+   3. Implement tutoring for students with attendance below 80%
+   4. Investigate best practices from Biology program
+
+======================================================================

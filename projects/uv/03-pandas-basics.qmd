@@ -1,0 +1,292 @@
+---
+title: "Chapter 1.3: Data Magic with Pandas"
+subtitle: "Load, Explore, and Transform Data Like a Pro"
+format:
+  live-html:
+    code-tools: true
+execute:
+  eval: false
+---
+
+::: {.quest-badge}
+🚀 PROJECT 1.3 | Difficulty: Intermediate | Time: 20 minutes
+:::
+
+::: {.concept-box}
+**📊 Complexity Level: Intermediate ⭐⭐**
+
+Learn the powerful pandas library for data manipulation. Pandas is used by data scientists, analysts, and developers worldwide!
+:::
+
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/uv/03-pandas-basics.ipynb)** - Full Jupyter environment in your browser
+- ▶️ **Run code directly below** - All code cells on this page are editable and runnable
+- 📥 **[Download Notebook](../../files/projects/uv/03-pandas-basics.ipynb)** - For use in local Jupyter or Google Colab
+:::
+
+## 📖 Introduction: What is Pandas?
+
+**Pandas** is Python's most popular library for working with data. Think of it as Excel on steroids—you can:
+- Load data from CSV files, Excel spreadsheets, databases, and more
+- Filter and sort data based on conditions
+- Calculate statistics and aggregations
+- Transform and clean messy data
+- Merge multiple datasets together
+
+::: {.story-box}
+**🎯 Real-World Use**: Data scientists at companies like Netflix, Spotify, and Uber use pandas every day to analyze user behavior, optimize recommendations, and make business decisions based on millions of data points!
+:::
+
+## 🔑 Core Pandas Concepts
+
+### DataFrames: Your Data Spreadsheet
+
+A **DataFrame** is pandas' main data structure. It's like a table with rows and columns:
+
+```{python}
+import pandas as pd
+import numpy as np
+
+# Create a simple DataFrame
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve'],
+    'Age': [22, 21, 23, 22, 20],
+    'Major': ['CS', 'Math', 'CS', 'Biology', 'CS'],
+    'GPA': [3.8, 3.6, 3.9, 3.7, 3.5]
+}
+
+df = pd.DataFrame(data)
+print("📊 Student DataFrame:")
+print(df)
+```
+
+### Series: A Single Column
+
+Each column in a DataFrame is a **Series**:
+
+```{python}
+# Access a single column (returns a Series)
+names = df['Name']
+print("Names column:")
+print(names)
+print(f"\nType: {type(names)}")
+```
+
+## 📊 Loading Real Data
+
+Let's create a realistic dataset to work with:
+
+```{python}
+# Create a larger, more realistic dataset
+np.random.seed(42)  # For reproducible results
+
+students_data = {
+    'StudentID': range(1001, 1051),
+    'Name': [f'Student{i}' for i in range(1, 51)],
+    'Age': np.random.randint(18, 25, 50),
+    'Major': np.random.choice(['CS', 'Math', 'Biology', 'Physics', 'Engineering'], 50),
+    'GPA': np.round(np.random.uniform(2.5, 4.0, 50), 2),
+    'Credits': np.random.randint(30, 120, 50),
+    'Scholarship': np.random.choice([True, False], 50)
+}
+
+students_df = pd.DataFrame(students_data)
+
+print("📚 Large Student Dataset:")
+print(students_df.head())  # Show first 5 rows
+print(f"\nDataset shape: {students_df.shape[0]} rows × {students_df.shape[1]} columns")
+```
+
+::: {.info-box}
+**📝 The `head()` Method**
+
+`df.head(n)` shows the first n rows (default is 5). This is useful for large datasets!
+
+Similarly, `df.tail(n)` shows the last n rows.
+:::
+
+## 🔍 Exploring Your Data
+
+### Basic Information
+
+```{python}
+# Get dataset information
+print("ℹ️ Dataset Info:")
+print(f"Shape: {students_df.shape}")
+print(f"Columns: {list(students_df.columns)}")
+print(f"\nData types:")
+print(students_df.dtypes)
+```
+
+### Statistical Summary
+
+```{python}
+# Get statistical summary of numerical columns
+print("📊 Statistical Summary:")
+print(students_df.describe())
+```
+
+### Checking for Missing Data
+
+```{python}
+# Check for missing values
+print("🔍 Missing Values:")
+print(students_df.isnull().sum())
+```
+
+## 🎯 Filtering and Selecting Data
+
+### Filter by Condition
+
+```{python}
+# Find CS students with GPA > 3.5
+top_cs_students = students_df[(students_df['Major'] == 'CS') & (students_df['GPA'] > 3.5)]
+
+print("🌟 Top CS Students (GPA > 3.5):")
+print(top_cs_students[['Name', 'GPA', 'Major']])
+print(f"\nFound {len(top_cs_students)} students!")
+```
+
+### Select Specific Columns
+
+```{python}
+# Select only Name, Major, and GPA
+subset = students_df[['Name', 'Major', 'GPA']]
+print("📋 Selected Columns:")
+print(subset.head())
+```
+
+### Sorting Data
+
+```{python}
+# Sort by GPA in descending order
+sorted_by_gpa = students_df.sort_values('GPA', ascending=False)
+print("🏆 Top 10 Students by GPA:")
+print(sorted_by_gpa[['Name', 'Major', 'GPA']].head(10))
+```
+
+## 🧮 Calculations and Aggregations
+
+### Group By
+
+```{python}
+# Calculate average GPA by major
+major_stats = students_df.groupby('Major')['GPA'].agg(['mean', 'min', 'max', 'count'])
+major_stats = major_stats.round(2)
+
+print("📊 GPA Statistics by Major:")
+print(major_stats)
+```
+
+### Adding Calculated Columns
+
+```{python}
+# Add a column for years until graduation (assuming 120 credits needed)
+students_df['CreditsRemaining'] = 120 - students_df['Credits']
+students_df['YearsRemaining'] = (students_df['CreditsRemaining'] / 30).round(1)
+
+print("🎓 Graduation Timeline:")
+print(students_df[['Name', 'Credits', 'YearsRemaining']].head(10))
+```
+
+## 🛠️ Data Transformation
+
+### Creating Categories
+
+```{python}
+# Categorize students by GPA
+def gpa_category(gpa):
+    if gpa >= 3.7:
+        return 'Excellent'
+    elif gpa >= 3.3:
+        return 'Good'
+    elif gpa >= 3.0:
+        return 'Satisfactory'
+    else:
+        return 'Needs Improvement'
+
+students_df['Performance'] = students_df['GPA'].apply(gpa_category)
+
+print("📈 Performance Categories:")
+print(students_df['Performance'].value_counts())
+```
+
+### Value Counts
+
+```{python}
+# Count students by major
+print("👥 Students per Major:")
+print(students_df['Major'].value_counts())
+
+print("\n💰 Scholarship Distribution:")
+print(students_df['Scholarship'].value_counts())
+```
+
+## 💾 Saving Your Data
+
+```python
+# Save to CSV (this would run locally)
+students_df.to_csv('student_data.csv', index=False)
+
+# Save to Excel
+students_df.to_excel('student_data.xlsx', index=False)
+
+# Load it back
+loaded_df = pd.read_csv('student_data.csv')
+```
+
+::: {.pro-tip}
+**💡 Pro Tip**: Always use `index=False` when saving to CSV unless you specifically want to save the row numbers!
+:::
+
+## 🎮 Practice Challenges
+
+::: {.challenge-box}
+**🏆 Challenge 1: Data Detective**
+
+Using the `students_df` dataset:
+1. Find all students with more than 90 credits
+2. Calculate the percentage of students on scholarship
+3. Find which major has the highest average GPA
+
+Try it yourself!
+
+```{python}
+# Your code here!
+# Challenge 1
+high_credits = students_df[students_df['Credits'] > 90]
+print(f"Students with 90+ credits: {len(high_credits)}")
+
+# Challenge 2
+scholarship_pct = (students_df['Scholarship'].sum() / len(students_df)) * 100
+print(f"Percentage on scholarship: {scholarship_pct:.1f}%")
+
+# Challenge 3
+major_gpa = students_df.groupby('Major')['GPA'].mean().sort_values(ascending=False)
+print(f"\nHighest GPA Major: {major_gpa.index[0]} ({major_gpa.iloc[0]:.2f})")
+```
+:::
+
+::: {.challenge-box}
+**🏆 Challenge 2: Create Your Own Analysis**
+
+Create a new DataFrame with at least 3 columns and 10 rows about a topic you're interested in (movies, games, sports, etc.). Then:
+- Filter the data based on some condition
+- Sort by one column
+- Calculate some statistics
+:::
+
+## 🚀 What's Next?
+
+Now that you can manipulate data with pandas, in the next slide we'll:
+- Create beautiful visualizations with matplotlib
+- Make bar charts, line graphs, and scatter plots
+- Visualize the student data we just analyzed!
+
+---
+
+::: {.navigation-box}
+**Previous**: [1.2 Installing UV](02-setup-uv.qmd) | **Next**: [1.4 Visualizing Data with Matplotlib](04-matplotlib-viz.qmd)
+:::

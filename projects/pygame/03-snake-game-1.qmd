@@ -1,0 +1,301 @@
+---
+title: "Chapter 2.3: Building Snake Game - Part 1"
+subtitle: "Create the Classic Snake Game - Fundamentals"
+format:
+  live-html:
+    code-tools: true
+execute:
+  eval: false
+---
+
+::: {.quest-badge}
+🎮 PROJECT 2.3 | Difficulty: Intermediate | Time: 25 minutes
+:::
+
+::: {.tip-box}
+**💻 Interactive Options:**
+
+- 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/pygame/03-snake-game-1.ipynb)**
+- 📥 **[Download Notebook](../../files/projects/pygame/03-snake-game-1.ipynb)**
+:::
+
+## 🐍 Game Design: Snake
+
+**Goal**: Control a snake, eat food, grow longer, avoid hitting walls or yourself
+
+**Game Mechanics**:
+- Snake moves continuously in one direction
+- Arrow keys change direction
+- Eating food makes snake grow
+- Game over if snake hits wall or itself
+
+## 📐 Grid-Based Movement
+
+Snake uses a grid system. Instead of pixel-by-pixel movement, the snake moves in blocks:
+
+```{python}
+# Grid-based game concept
+GRID_SIZE = 20  # Each square is 20x20 pixels
+GRID_WIDTH = 800 // GRID_SIZE  # 40 squares wide
+GRID_HEIGHT = 600 // GRID_SIZE  # 30 squares tall
+
+print(f"Grid: {GRID_WIDTH}x{GRID_HEIGHT} = {GRID_WIDTH * GRID_HEIGHT} total squares")
+
+# Snake position in grid coordinates
+snake_x = 10  # 10 squares from left
+snake_y = 15  # 15 squares from top
+
+# Convert to pixel coordinates
+pixel_x = snake_x * GRID_SIZE  # 200 pixels
+pixel_y = snake_y * GRID_SIZE  # 300 pixels
+
+print(f"Grid position ({snake_x}, {snake_y}) = Pixel position ({pixel_x}, {pixel_y})")
+```
+
+## 🎮 Snake Data Structure
+
+The snake is a list of positions:
+
+```{python}
+# Snake as a list of (x, y) positions
+# Head is at index 0, tail is at the end
+snake = [
+    (10, 15),  # Head
+    (9, 15),   # Body segment
+    (8, 15),   # Body segment
+    (7, 15),   # Tail
+]
+
+print("🐍 Snake structure:")
+for i, segment in enumerate(snake):
+    if i == 0:
+        print(f"  Head: {segment}")
+    elif i == len(snake) - 1:
+        print(f"  Tail: {segment}")
+    else:
+        print(f"  Body: {segment}")
+
+# Moving the snake: add new head, remove tail
+direction = (1, 0)  # Moving right
+head_x, head_y = snake[0]
+new_head = (head_x + direction[0], head_y + direction[1])
+
+snake.insert(0, new_head)  # Add new head
+snake.pop()  # Remove tail
+
+print(f"\nAfter moving right:")
+print(f"  New snake: {snake}")
+```
+
+## 🎯 Complete Snake Game - Basic Version
+
+```python
+# snake_game.py
+import pygame
+import random
+import sys
+
+pygame.init()
+
+# Constants
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+GRID_SIZE = 20
+GRID_WIDTH = SCREEN_WIDTH // GRID_SIZE
+GRID_HEIGHT = SCREEN_HEIGHT // GRID_SIZE
+FPS = 10  # Slower for easier gameplay
+
+# Colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+GREEN = (0, 255, 0)
+RED = (255, 0, 0)
+
+# Initialize display
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Snake Game")
+clock = pygame.time.Clock()
+
+# Snake starts in the middle
+snake = [(GRID_WIDTH // 2, GRID_HEIGHT // 2)]
+direction = (1, 0)  # Start moving right
+next_direction = direction
+
+# Food position
+def spawn_food():
+    while True:
+        food = (random.randint(0, GRID_WIDTH - 1),
+                random.randint(0, GRID_HEIGHT - 1))
+        if food not in snake:
+            return food
+
+food = spawn_food()
+score = 0
+
+# Game loop
+running = True
+while running:
+    # Handle events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP and direction != (0, 1):
+                next_direction = (0, -1)
+            elif event.key == pygame.K_DOWN and direction != (0, -1):
+                next_direction = (0, 1)
+            elif event.key == pygame.K_LEFT and direction != (1, 0):
+                next_direction = (-1, 0)
+            elif event.key == pygame.K_RIGHT and direction != (-1, 0):
+                next_direction = (1, 0)
+    
+    # Update direction
+    direction = next_direction
+    
+    # Move snake
+    head_x, head_y = snake[0]
+    new_head = (head_x + direction[0], head_y + direction[1])
+    
+    # Check wall collision
+    if (new_head[0] < 0 or new_head[0] >= GRID_WIDTH or
+        new_head[1] < 0 or new_head[1] >= GRID_HEIGHT):
+        print(f"Game Over! Score: {score}")
+        running = False
+        continue
+    
+    # Check self collision
+    if new_head in snake:
+        print(f"Game Over! Score: {score}")
+        running = False
+        continue
+    
+    # Add new head
+    snake.insert(0, new_head)
+    
+    # Check if ate food
+    if new_head == food:
+        score += 1
+        food = spawn_food()
+    else:
+        snake.pop()  # Remove tail if didn't eat
+    
+    # Draw everything
+    screen.fill(BLACK)
+    
+    # Draw snake
+    for segment in snake:
+        rect = pygame.Rect(
+            segment[0] * GRID_SIZE,
+            segment[1] * GRID_SIZE,
+            GRID_SIZE - 1,
+            GRID_SIZE - 1
+        )
+        pygame.draw.rect(screen, GREEN, rect)
+    
+    # Draw food
+    food_rect = pygame.Rect(
+        food[0] * GRID_SIZE,
+        food[1] * GRID_SIZE,
+        GRID_SIZE - 1,
+        GRID_SIZE - 1
+    )
+    pygame.draw.rect(screen, RED, food_rect)
+    
+    # Draw score
+    font = pygame.font.Font(None, 36)
+    score_text = font.render(f'Score: {score}', True, WHITE)
+    screen.blit(score_text, (10, 10))
+    
+    pygame.display.flip()
+    clock.tick(FPS)
+
+pygame.quit()
+sys.exit()
+```
+
+## 🔑 Key Concepts Explained
+
+### Direction Control
+
+```{python}
+# Why we check opposite direction
+print("🎮 Direction Logic:")
+print("If moving RIGHT (1, 0), can't immediately go LEFT (-1, 0)")
+print("If moving UP (0, -1), can't immediately go DOWN (0, 1)")
+print("\nThis prevents the snake from reversing into itself!")
+
+# Direction vectors
+directions = {
+    "UP": (0, -1),
+    "DOWN": (0, 1),
+    "LEFT": (-1, 0),
+    "RIGHT": (1, 0)
+}
+
+for name, vector in directions.items():
+    print(f"{name}: {vector}")
+```
+
+### Collision Detection
+
+```{python}
+# Two types of collisions in Snake
+
+# 1. Wall collision
+def check_wall_collision(position, grid_width, grid_height):
+    x, y = position
+    return (x < 0 or x >= grid_width or 
+            y < 0 or y >= grid_height)
+
+# 2. Self collision
+def check_self_collision(head, body):
+    return head in body
+
+# Examples
+print("Wall Collision Examples:")
+print(f"  (-1, 5) hits wall: {check_wall_collision((-1, 5), 40, 30)}")
+print(f"  (20, 15) safe: {check_wall_collision((20, 15), 40, 30)}")
+
+print("\nSelf Collision Examples:")
+snake_body = [(5, 5), (5, 6), (5, 7)]
+print(f"  Head at (5, 5): {check_self_collision((5, 5), snake_body[1:])}")
+print(f"  Head at (5, 8): {check_self_collision((5, 8), snake_body)}")
+```
+
+## 🏆 Practice Challenges
+
+::: {.challenge-box}
+**Challenge 1: Add Features**
+
+Enhance the game with:
+1. **Display game over screen** instead of just closing
+2. **Add restart functionality** (press R to restart)
+3. **Show high score** that persists between games
+
+**Challenge 2: Visual Improvements**
+
+1. Draw the snake head differently from body
+2. Add a grid background
+3. Make food blink or animate
+4. Add border around the play area
+
+**Challenge 3: Gameplay Variations**
+
+1. **Walls**: Add obstacles in the middle
+2. **Power-ups**: Special food that gives bonus points
+3. **Speed increase**: Game gets faster as score increases
+:::
+
+## 🚀 What's Next?
+
+In the next slide, we'll complete the Snake game with:
+- Restart functionality
+- Score persistence
+- Visual improvements
+- Sound effects (optional)
+
+---
+
+::: {.navigation-box}
+**Previous**: [2.2 Setup Pygame](02-setup-pygame.qmd) | **Next**: [2.4 Snake Game - Part 2](04-snake-game-2.qmd)
+:::
