@@ -453,6 +453,7 @@ You've completed the UV & Data Analysis chapter! You now know:
 ✅ Best practices and next steps  
 
 These skills are **highly valuable** in:
+
 - Data Science careers 🔬
 - Software Engineering 💻
 - Research 📊

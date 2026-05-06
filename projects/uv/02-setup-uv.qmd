@@ -99,6 +99,7 @@ student-grades-analyzer/
 **📝 What's `pyproject.toml`?**
 
 This is your project's configuration file. It tells UV:
+
 - What your project is called
 - Which Python version to use
 - Which packages your project depends on
@@ -237,6 +238,7 @@ uv lock --upgrade
 **🏆 Challenge**: 
 
 Modify the `analyze_grades.py` script to:
+
 - Add a 'Grade Letter' column (A for 90+, B for 80+, etc.)
 - Calculate class averages per subject
 - Find which subject has the highest class average
@@ -245,6 +247,7 @@ Modify the `analyze_grades.py` script to:
 ## 🚀 What's Next?
 
 Now that you have UV set up and a working project, in the next slide we'll:
+
 - Dive deeper into pandas for data manipulation
 - Load data from files (CSV, Excel)
 - Clean and transform real-world data

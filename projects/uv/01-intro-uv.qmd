@@ -39,6 +39,7 @@ Imagine you're building a spaceship, but instead of crafting every single bolt a
 ## 💡 What is UV?
 
 **UV** is:
+
 - ⚡ **Super Fast**: Written in Rust, it's significantly faster than pip
 - 🔒 **Reliable**: Creates reproducible environments
 - 🎯 **Simple**: One tool for all package management needs
@@ -75,6 +76,7 @@ print("In the next slides, we'll install UV and create our first project.")
 
 ### Package Managers
 A **package manager** is a tool that:
+
 - Downloads and installs libraries (packages)
 - Manages versions of those packages
 - Handles dependencies (when Package A needs Package B)
@@ -84,6 +86,7 @@ A **package manager** is a tool that:
 Think of a virtual environment as a bubble around your project. Everything your project needs stays in the bubble, separate from other projects. This prevents conflicts when different projects need different versions of the same library.
 
 ### Dependencies
+
 **Dependencies** are other packages your project needs to work. For example:
 - A data analysis project might depend on `pandas` and `matplotlib`
 - A web application might depend on `flask` and `requests`

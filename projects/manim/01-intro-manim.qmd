@@ -34,6 +34,7 @@ Learn to create beautiful mathematical animations! Manim is the tool behind 3Blu
 **🎯 Real-World Use**: 
 
 Manim is used by:
+
 - **Educators** - Visualize complex math concepts
 - **YouTubers** - Create educational content (3Blue1Brown, Numberphile)
 - **Researchers** - Present findings with clear animations
@@ -234,6 +235,7 @@ By the end of this chapter, you'll create:
 ## 🤔 Is Manim Right for You?
 
 **Choose Manim if you want to:**
+
 - ✅ Create educational math content
 - ✅ Visualize complex mathematical concepts
 - ✅ Have precise control over animations
@@ -241,6 +243,7 @@ By the end of this chapter, you'll create:
 - ✅ Create reproducible, version-controlled animations
 
 **Maybe not if:**
+
 - ❌ You need real-time interaction (try p5.js or Processing)
 - ❌ You want WYSIWYG editing (try After Effects)
 - ❌ You need fast turnaround (render times can be long)
@@ -254,6 +257,7 @@ Many students report finally understanding linear algebra or calculus after watc
 ## 🚀 What's Next?
 
 In the next slides, we'll:
+
 - Install Manim (with UV!)
 - Create your first scene
 - Learn core animation techniques

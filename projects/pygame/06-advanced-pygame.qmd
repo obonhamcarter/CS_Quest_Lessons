@@ -398,6 +398,7 @@ You've completed the Pygame chapter! You now know:
 ✅ Advanced patterns and polish  
 
 These skills transfer to:
+
 - Mobile game development
 - Web games (with Pygame WebAssembly)
 - Simulations and visualizations

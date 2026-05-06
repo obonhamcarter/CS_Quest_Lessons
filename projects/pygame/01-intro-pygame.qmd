@@ -29,11 +29,13 @@ Learn game development with Pygame! Perfect for students who know Python basics 
 ## 📖 Introduction: Why Game Development?
 
 Ever wanted to create your own games? With **Pygame**, you can build:
+
 - 🐍 Classic games like Snake and Pong
 - 👾 Space shooters like Space Invaders
 - 🎮 Platformers, puzzle games, and more!
 
 Game development teaches:
+
 - **Event handling** - responding to keyboard and mouse input
 - **Graphics** - drawing shapes and managing sprites
 - **Game loops** - the heartbeat of every game
@@ -44,6 +46,7 @@ Game development teaches:
 **🎯 Real-World Connection**: 
 
 Game development isn't just for fun! The skills you learn apply to:
+
 - **Mobile apps** (touch events, animations)
 - **Data visualizations** (interactive graphics)
 - **Simulations** (physics, modeling)
@@ -222,6 +225,7 @@ print(f"Yellow + Green = {olive}")
 ### Snake Game 🐍
 
 Classic arcade game where you:
+
 - Control a snake that grows when eating food
 - Avoid hitting walls or yourself
 - Score points for each food item
@@ -231,6 +235,7 @@ Classic arcade game where you:
 ### Space Invaders 👾
 
 Retro shooter where you:
+
 - Control a spaceship
 - Shoot enemies moving across the screen
 - Dodge enemy bullets
@@ -301,6 +306,7 @@ Before we code, let's think like game designers:
 **💭 Design Exercise:**
 
 Think about your favorite game. Consider:
+
 1. **What's the main goal?** (e.g., reach the exit, defeat enemies, solve puzzles)
 2. **What makes it challenging?** (time limits, obstacles, complex puzzles)
 3. **What keeps you playing?** (progression, unlockables, story)
@@ -327,6 +333,7 @@ How does Pygame compare to other tools?
 | **PyGame Zero** | Young programmers | Very Easy | Python library |
 
 Pygame is perfect for learning because:
+
 - You write actual Python code (not visual blocks)
 - It's not overwhelming like full engines
 - You understand what's happening "under the hood"
@@ -335,6 +342,7 @@ Pygame is perfect for learning because:
 ## 🚀 What's Next?
 
 In the next slide, we'll:
+
 - Install Pygame using UV
 - Create your first game window
 - Draw basic shapes

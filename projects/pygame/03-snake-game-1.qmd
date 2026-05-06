@@ -24,6 +24,7 @@ execute:
 **Goal**: Control a snake, eat food, grow longer, avoid hitting walls or yourself
 
 **Game Mechanics**:
+
 - Snake moves continuously in one direction
 - Arrow keys change direction
 - Eating food makes snake grow
@@ -268,6 +269,7 @@ print(f"  Head at (5, 8): {check_self_collision((5, 8), snake_body)}")
 **Challenge 1: Add Features**
 
 Enhance the game with:
+
 1. **Display game over screen** instead of just closing
 2. **Add restart functionality** (press R to restart)
 3. **Show high score** that persists between games
@@ -289,6 +291,7 @@ Enhance the game with:
 ## 🚀 What's Next?
 
 In the next slide, we'll complete the Snake game with:
+
 - Restart functionality
 - Score persistence
 - Visual improvements

@@ -24,6 +24,7 @@ execute:
 **Goal**: Defend Earth by shooting alien invaders before they reach the bottom
 
 **Game Mechanics**:
+
 - Player ship moves left/right at bottom
 - Shoot bullets upward
 - Aliens move side-to-side and down
@@ -382,6 +383,7 @@ print(f"  Bullet misses: {check_collision(miss, alien)}")
 **Challenge 1: Shields**
 
 Add destructible shields between player and aliens:
+
 - Create 3-4 shields
 - Bullets destroy shield pixels
 - Shields protect player
@@ -389,6 +391,7 @@ Add destructible shields between player and aliens:
 **Challenge 2: Wave System**
 
 Make aliens come in waves:
+
 - After defeating all aliens, spawn new wave
 - Each wave is faster/harder
 - Track wave number
@@ -396,6 +399,7 @@ Make aliens come in waves:
 **Challenge 3: Power-Ups**
 
 Add power-ups that fall from destroyed aliens:
+
 - Rapid fire
 - Shield
 - Multi-shot
@@ -403,6 +407,7 @@ Add power-ups that fall from destroyed aliens:
 **Challenge 4: Boss Battle**
 
 Add a boss alien that:
+
 - Has more health
 - Moves differently
 - Shoots multiple bullets
@@ -412,6 +417,7 @@ Add a boss alien that:
 ## 🚀 What's Next?
 
 You've now built two classic games! In the final slide, we'll explore:
+
 - Advanced game patterns
 - Particle effects
 - Game juice (polish)

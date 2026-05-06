@@ -253,16 +253,19 @@ Zoom into the famous fractal
 ## 📚 Resources & Next Steps
 
 ### Learning More
+
 - **Manim Community Docs**: docs.manim.community
 - **3Blue1Brown Channel**: YouTube for inspiration
 - **Theorem of Beethoven**: Manim tutorials on YouTube
 
 ### Where to Run Manim
+
 - **Locally**: Full control, best performance
 - **Google Colab**: Free, cloud-based
 - **try.manim.community**: Online editor
 
 ### Share Your Work
+
 - **YouTube**: Create educational content
 - **Twitter/X**: Share short clips
 - **GitHub**: Open-source your animations
@@ -270,6 +273,7 @@ Zoom into the famous fractal
 ## 🎉 Congratulations!
 
 You now know:
+
 - ✅ Basic Manim setup and rendering
 - ✅ Shapes, colors, and animations
 - ✅ Mathematical functions and graphs
@@ -281,11 +285,13 @@ You now know:
 ## 🚀 Your Journey Continues
 
 You've completed all three chapters:
+
 1. **UV & Data Analysis** - Professional Python workflows
 2. **Pygame** - Game development
 3. **Manim** - Mathematical animations
 
 These skills open doors to:
+
 - 🎓 Education technology
 - 📊 Data visualization
 - 🎮 Game development

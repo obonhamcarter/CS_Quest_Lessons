@@ -29,6 +29,7 @@ Learn the powerful pandas library for data manipulation. Pandas is used by data 
 ## 📖 Introduction: What is Pandas?
 
 **Pandas** is Python's most popular library for working with data. Think of it as Excel on steroids—you can:
+
 - Load data from CSV files, Excel spreadsheets, databases, and more
 - Filter and sort data based on conditions
 - Calculate statistics and aggregations
@@ -247,6 +248,7 @@ loaded_df = pd.read_csv('student_data.csv')
 **🏆 Challenge 1: Data Detective**
 
 Using the `students_df` dataset:
+
 1. Find all students with more than 90 credits
 2. Calculate the percentage of students on scholarship
 3. Find which major has the highest average GPA
@@ -273,6 +275,7 @@ print(f"\nHighest GPA Major: {major_gpa.index[0]} ({major_gpa.iloc[0]:.2f})")
 **🏆 Challenge 2: Create Your Own Analysis**
 
 Create a new DataFrame with at least 3 columns and 10 rows about a topic you're interested in (movies, games, sports, etc.). Then:
+
 - Filter the data based on some condition
 - Sort by one column
 - Calculate some statistics
@@ -281,6 +284,7 @@ Create a new DataFrame with at least 3 columns and 10 rows about a topic you're 
 ## 🚀 What's Next?
 
 Now that you can manipulate data with pandas, in the next slide we'll:
+
 - Create beautiful visualizations with matplotlib
 - Make bar charts, line graphs, and scatter plots
 - Visualize the student data we just analyzed!

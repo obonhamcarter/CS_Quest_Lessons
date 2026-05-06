@@ -40,6 +40,7 @@ Numbers tell a story, but visualizations make that story **instantly understanda
 ## 🎨 Introduction to Matplotlib
 
 **Matplotlib** is Python's most popular plotting library. It can create:
+
 - 📊 Bar charts
 - 📈 Line graphs
 - 🎯 Scatter plots
@@ -301,6 +302,7 @@ print("📊 Complete analysis shows multiple insights at once!")
 **🏆 Challenge 1: Create a Visualization**
 
 Create a bar chart showing:
+
 - Your top 5 favorite movies/games/books
 - Rate each from 1-10
 - Color bars based on rating (low=red, high=green)
@@ -325,6 +327,7 @@ plt.show()
 **🏆 Challenge 2: Multi-Plot Dashboard**
 
 Create a 2x2 grid showing:
+
 1. Your weekly schedule (bar chart of hours per activity)
 2. Your mood over a week (line chart)
 3. Any scatter plot of your choice
@@ -334,6 +337,7 @@ Create a 2x2 grid showing:
 ## 🚀 What's Next?
 
 You now know both pandas and matplotlib! In the next slide, we'll:
+
 - Combine everything into a real data analysis project
 - Load data from CSV files
 - Clean, analyze, and visualize real-world data

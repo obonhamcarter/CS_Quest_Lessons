@@ -29,6 +29,7 @@ This is where it all comes together! Build a complete data analysis project usin
 ## 📖 Project Overview: Student Performance Analytics
 
 We're going to build a **complete data analysis system** that:
+
 1. 📥 Generates realistic student data (or loads from CSV)
 2. 🧹 Cleans and validates the data
 3. 📊 Performs statistical analysis
@@ -41,6 +42,7 @@ This mirrors what data analysts do in the real world!
 **🎯 Real-World Scenario**: 
 
 You're a data analyst at a university. The administration wants to understand:
+
 - Which programs have the strongest students?
 - Do scholarships correlate with better performance?
 - What factors predict student success?
@@ -438,6 +440,7 @@ These are **exactly the skills** data analysts use in real jobs!
 ## 🚀 Next Steps
 
 Want to take this further?
+
 - Add more variables (sports participation, extracurriculars, etc.)
 - Load real CSV data instead of generated data
 - Build an interactive dashboard with Plotly

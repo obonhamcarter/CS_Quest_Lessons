@@ -246,12 +246,14 @@ print("\nHigher FPS = smoother motion!")
 **Challenge: Bouncing Ball**
 
 Create a program where:
+
 1. A ball starts at the center
 2. It moves diagonally
 3. It bounces off the walls
 4. Bonus: Change color on each bounce!
 
 Hints:
+
 - Use variables for x_speed and y_speed
 - When x hits 0 or SCREEN_WIDTH, reverse x_speed
 - When y hits 0 or SCREEN_HEIGHT, reverse y_speed

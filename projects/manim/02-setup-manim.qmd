@@ -171,6 +171,7 @@ class TimingExample(Scene):
 **Challenge 1: Shape Dance**
 
 Create a scene where:
+
 1. Three shapes (circle, square, triangle) appear
 2. They rotate 360 degrees simultaneously
 3. They change colors
@@ -179,6 +180,7 @@ Create a scene where:
 **Challenge 2: Name Animation**
 
 Animate your name:
+
 1. Write it letter by letter
 2. Change the color
 3. Make it grow and shrink
@@ -188,6 +190,7 @@ Animate your name:
 ## 🚀 What's Next?
 
 Now that you can create and animate basic objects, we'll learn:
+
 - Mathematical functions and graphs
 - LaTeX equations
 - Complex transformations
