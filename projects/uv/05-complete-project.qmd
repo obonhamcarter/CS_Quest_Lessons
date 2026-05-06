@@ -23,7 +23,7 @@ This is where it all comes together! Build a complete data analysis project usin
 
 - 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/uv/05-complete-project.ipynb)** - Full Jupyter environment in your browser
 - ▶️ **Run code directly below** - All code cells on this page are editable and runnable
-- 📥 **[Download Notebook](../../files/projects/uv/05-complete-project.ipynb)** - For use in local Jupyter or Google Colab
+- 📥 **[Download Notebook (Challenge)](../../files/projects/uv/data-analysis-challenge.ipynb)** - For use in local Jupyter or Google Colab
 :::
 
 ## 📖 Project Overview: Student Performance Analytics

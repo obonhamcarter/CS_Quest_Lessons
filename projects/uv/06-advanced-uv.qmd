@@ -22,7 +22,7 @@ Learn advanced UV features, best practices, and discover what's next in your dat
 **💻 Interactive Options:**
 
 - 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/uv/06-advanced-uv.ipynb)** - Full Jupyter environment in your browser
-- 📥 **[Download Notebook](../../files/projects/uv/06-advanced-uv.ipynb)** - For use in local Jupyter or Google Colab
+- 📥 **[Download Notebook (Challenge)](../../files/projects/uv/data-analysis-challenge.ipynb)** - For use in local Jupyter or Google Colab
 :::
 
 ## 📖 Advanced UV Features

@@ -23,7 +23,7 @@ Perfect for students who have completed basic Python lessons. This project intro
 
 - 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/uv/01-intro-uv.ipynb)** - Full Jupyter environment in your browser
 - ▶️ **Run code directly below** - All code cells on this page are editable and runnable
-- 📥 **[Download Notebook](../../files/projects/uv/01-intro-uv.ipynb)** - For use in local Jupyter or Google Colab
+- 📥 **[Download Notebook (Challenge)](../../files/projects/uv/data-analysis-challenge.ipynb)** - For use in local Jupyter or Google Colab
 :::
 
 ## 📖 Introduction: The Package Manager Revolution

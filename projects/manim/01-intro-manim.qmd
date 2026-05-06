@@ -22,7 +22,7 @@ Learn to create beautiful mathematical animations! Manim is the tool behind 3Blu
 **💻 Interactive Options:**
 
 - 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/manim/01-intro-manim.ipynb)**
-- 📥 **[Download Notebook](../../files/projects/manim/01-intro-manim.ipynb)**
+- 📥 **[Download Notebook (Challenge)](../../files/projects/manim/math-visualization-challenge.ipynb)**
 - 💡 **Note**: Manim renders videos locally, but examples work in notebooks!
 :::
 

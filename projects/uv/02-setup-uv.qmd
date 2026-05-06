@@ -22,7 +22,7 @@ Hands-on installation and project setup. You'll learn terminal commands and proj
 **💻 Interactive Options:**
 
 - 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/uv/02-setup-uv.ipynb)** - Full Jupyter environment in your browser
-- 📥 **[Download Notebook](../../files/projects/uv/02-setup-uv.ipynb)** - For use in local Jupyter or Google Colab
+  - 📥 **[Download Notebook](../../files/projects/uv/02-setup-uv.ipynb)** - For use in local Jupyter or Google Colab
 - 💡 **Note**: Installing UV requires a terminal, so we'll show examples but you'll run this locally!
 :::
 

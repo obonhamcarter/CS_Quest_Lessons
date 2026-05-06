@@ -2,6 +2,7 @@
 /.quarto/
 /_site/
 *_cache/
+*_files/
 
 # JupyterLite
 jupyterlite_build/

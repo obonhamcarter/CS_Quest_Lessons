@@ -14,7 +14,7 @@ format:
 **💻 Interactive Options:**
 
 - 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/manim/02-setup-manim.ipynb)**
-- 📥 **[Download Notebook](../../files/projects/manim/02-setup-manim.ipynb)**
+- 📥 **[Download Notebook (Challenge)](../../files/projects/manim/math-visualization-challenge.ipynb)**
 - 💡 **Note**: Manim requires FFmpeg and LaTeX for full functionality
 :::
 

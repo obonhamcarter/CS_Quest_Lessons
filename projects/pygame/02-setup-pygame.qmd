@@ -16,7 +16,7 @@ execute:
 **💻 Interactive Options:**
 
 - 📓 **[Open in JupyterLite](../../jupyterlite/lab/index.html?path=projects/pygame/02-setup-pygame.ipynb)**
-- 📥 **[Download Notebook](../../files/projects/pygame/02-setup-pygame.ipynb)**
+- 📥 **[Download Notebook (Challenge)](../../files/projects/pygame/game-logic-challenge.ipynb)** - For use in local Jupyter or Google Colab
 - 💡 **Note**: Pygame requires a display, so run these examples locally!
 :::
 
